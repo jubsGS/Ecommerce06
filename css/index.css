@@ -1,0 +1,344 @@
+body{
+    text-wrap: wrap;
+    width: 100%;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    gap: 0px;
+
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr auto;
+    background-color: rgb(255, 255, 255);
+    
+}
+    body ul{
+        list-style-type: none;
+        padding: 0px;
+    }
+
+    body a{
+        text-decoration: none;
+    }
+    body a:hover{
+        cursor: pointer;
+    }
+
+    body i:hover{
+        cursor: pointer;
+    }
+
+header{
+    grid-column: 1;
+    grid-row: 1;
+    position: fixed;
+
+    height: 50px;
+    width: 100%;
+    background-color:rgb(225, 248, 174);
+    padding: 0px;
+}
+    *>header .navTopo a:hover{
+        color: rgb(27, 65, 9);
+    }
+    .navTopo ul{
+        display: flex;
+        justify-content: space-between;
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+    .navTopo ul li {
+        display: inline;
+        position: relative;
+        margin-left: 0px;
+    }
+    .icons{
+        width: auto;
+        display: inline;
+        position: relative;
+    }
+    .navTopo .icons{
+        display: inline;
+        position: relative;
+        margin-inline: 0px;
+        width: 200px;
+    }
+     .navTopo ul li a{
+        width: auto;
+        height: auto;
+        text-decoration: none;
+        color: rgb(52, 117, 52);
+    }
+
+main{
+    grid-column: 1;
+    grid-row: 2;
+    
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3,auto);
+    gap: 0px;
+}
+    main #home{
+        grid-column: 1;
+        grid-row: 1;
+        margin-top: 30px;
+        width: 100%;
+        height: auto;
+    
+        background-color:rgb(243, 255, 217);
+        box-shadow: 0px 0px 15px rgb(243, 255, 217);
+        border-radius: 15px;
+    }
+        main  #home #textHome{
+            margin-left: 10%;
+            margin-top: 5%;
+            margin-bottom: 5%;
+            margin-right: 10%;
+            max-width: 60%;
+        }
+        main #textHome h1{
+            color: rgb(27, 65, 9);
+            margin: 0px;
+        }
+        main #textHome .slogan{
+            width: 70%;
+        }
+        
+    main #velas{
+        grid-column: 1;
+        grid-row: 2;
+        margin-top: 50px;
+    }
+        main #velas section:hover{
+            cursor: pointer;
+        }
+        main #velas section{
+            text-decoration: none;
+            color: black;
+        }
+        main #velas h1{
+            color: rgb(0, 0, 0);
+            min-width: 100%;
+            text-align: left;
+        }
+        main #velas img{
+            width: 100%;
+            max-width: 100%;
+            text-align: center;
+            border-radius: 10px;
+        }
+    main #sobre{
+        grid-column: 1;
+        grid-row: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 3%;
+
+        text-align: center;
+    }
+        main #sobreTxt{
+            background-color:rgb(243, 255, 217);
+            box-shadow: 0px 0px 15px rgb(243, 255, 217);
+            border-radius: 15px;
+            padding: 20px;
+        } 
+        main #sobre button{
+            margin-top: 10px;
+            border-radius: 20px;
+            border: 0px;
+            background-color: black;
+            color:rgb(243, 255, 217);
+            width: auto;
+            height: 25px;
+            transition: all 0.5s;
+        }
+        main #sobre button:hover{
+            background-color: rgb(238, 255, 201);
+            color: black;
+        }
+
+footer{
+    grid-column: 1;
+    grid-row: 3;   
+}
+    footer #contato p{
+        margin-left: 2%;
+        color: gray;
+    }
+    footer a{
+        text-decoration: none;
+        color: grey;
+    }
+    footer li{
+        list-style-type: none;
+    }
+    footer #efemero>*{
+        margin-left: 1%;
+    }
+
+/* Widescreen: */
+@media (min-width: 768px){
+    body{
+        font-size: 16px;
+    }
+        
+        main #textHome h1{
+            font-size: 400%;
+        }
+        main #textHome .slogan{
+            font-size: 130%;
+        }
+    main #velas #produtos{
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        grid-template-rows: repeat(auto, auto);
+        gap: 20px;
+        font-size: 16px;
+    }
+        main #velas section{
+            height: auto;
+            min-width: auto;
+
+            margin: 0px;
+            padding: 0px;
+
+            text-align: auto;
+
+            grid-column: auto;
+            grid-row: auto;
+        }
+        main #velas h1{
+            font-size: 40px;
+        }
+    footer{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr;
+        width: 100%;
+        height: auto;    
+        }
+        footer #efemero{
+            grid-column: 1;
+            grid-row: 1;
+            background-color:rgb(225, 248, 174);
+        }
+        footer #contato{
+            grid-column: 2;
+            grid-row: 1; 
+            background-color:rgb(225, 248, 174);
+        }
+}
+
+/* Tablet: */
+@media (min-width: 425px) and (max-width: 768px){
+    body{
+        font-size: 16px;
+    }
+        
+        main #textHome h1{
+            font-size: 300%;
+        }
+        main #textHome .slogan{
+            font-size: 110%;
+        }
+    main #velas #produtos{
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(auto, auto);
+        gap: 20px;
+        font-size: 16px;
+    }
+        main #velas section{
+            height: auto;
+            min-width: auto;
+
+            margin: 0px;
+            padding: 0px;
+
+            text-align: auto;
+
+            grid-column: auto;
+            grid-row: auto;
+        }
+        main #velas h1{
+            font-size: 30px;
+        }
+    footer{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr;
+        width: 100%;
+        height: auto;    
+        }
+        footer #efemero{
+            grid-column: 1;
+            grid-row: 1;
+            background-color:rgb(225, 248, 174);
+        }
+        footer #contato{
+            grid-column: 2;
+            grid-row: 1; 
+            background-color:rgb(225, 248, 174);
+        }
+}
+
+/* Mobile: */
+@media (max-width: 425px){
+    body{
+        font-size: 16px;
+    }
+        
+        main #textHome h1{
+            font-size: 250%;
+        }
+        main #textHome .slogan{
+            font-size: 90%;
+        }
+    main #velas #produtos{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(auto, auto);
+        gap: 20px;
+        font-size: 16px;
+    }
+        main #velas section{
+            height: auto;
+            min-width: auto;
+
+            margin: 0px;
+            padding: 0px;
+
+            text-align: auto;
+
+            grid-column: auto;
+            grid-row: auto;
+        }
+        main #velas h1{
+            font-size: 20px;
+        }
+    footer{
+        display: grid;
+        grid-template-columns:1fr;
+        grid-template-rows: auto 1fr;
+        width: 100%;
+        height: auto;    
+        }
+        footer #efemero{
+            grid-column: 1;
+            grid-row: 1;
+            background-color:rgb(225, 248, 174);
+        }
+        footer #contato{
+            grid-column: 1;
+            grid-row: 2; 
+            background-color:rgb(225, 248, 174);
+        }
+            
+}

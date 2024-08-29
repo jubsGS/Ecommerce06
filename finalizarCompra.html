@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/finaCompra.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader&display=swap" rel="stylesheet">
+    <title>Finalizar Compra</title>
+</head>
+<body>
+    <header>
+        <nav class="navTopo">
+            <ul>
+                <li>
+                    <a href="index.html"><strong>EFÊMERO</strong></a>
+                </li>
+
+                <li>
+                    <ul class="icons">
+                        <li><a href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                        <li><a href="login.html"><i class="fa-solid fa-user"></a></i></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="topicos">
+        <article class="header">
+        <h1>Finalizar Compra</h1>
+        </article>
+
+        <article class="finaCompra">
+            <section class="infoPedido">
+                <h2>Resumo do Pedido</h2>
+
+                <div class="pedido">
+                    <div class="NomeValor">
+                        <div>
+                            <h1 class="NomeItem">Nome do Item</h1>
+                            <h1 class="ValorItem">Valor</h1>
+                        </div>
+                    </div>
+                    
+                    <div class="itens">
+                        <div>
+                            <p class="item"><span id="nome-pedido">Nome do Item</span></p>
+                            <p class="valor"><span id="valor">R$ 0,00</span></p>
+                        </div>
+                        <div>
+                            <p class="item"><span id="nome-pedido">Nome do Item</span></p>
+                            <p class="valor"><span id="valor">R$ 0,00</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dados">
+                <div class="info">
+                    <h2>Informações Pessoais</h2>
+                    <form>
+                        <label for="país">País</label>
+                        <input type="text" id="país" name="país" required>
+
+                        <label for="estado">UF</label>
+                        <input type="text" id="estado" name="estado" required>
+
+                        <label for="cidade">Cidade</label>
+                        <input type="text" id="cidade" name="cidade" required>
+
+                        <label for="nome-usuario">Nome Completo</label>
+                        <input type="text" id="nome-usuario" name="nome-usuario" required>
+
+                        <label for="cel">Telefone</label>
+                        <input type="tel" id="cel" name="cel" required>
+                    </form>
+                </div>
+
+                <div class="pagamento">
+                    <h2>Método de Pagamento</h2>
+                    <form>
+                        <input type="radio" id="pix" name="pagamento" value="PIX" required>
+                        <label for="pix">PIX</label><br>
+
+                        <input type="radio" id="dinheiro" name="pagamento" value="Dinheiro" required>
+                        <label for="dinheiro">Dinheiro</label><br>
+
+                        <input type="radio" id="credito" name="pagamento" value="Cartão de Crédito" required>
+                        <label for="credito">Cartão de Crédito</label><br>
+
+                        <input type="radio" id="debito" name="pagamento" value="Cartão de Débito" required>
+                        <label for="debito">Cartão de Débito</label>
+                    </form>
+                </div>
+                <div class="botaoFinalizar">
+                    <button type="submit" class="botao-enviar">Finalizar Compra</button>
+                </div>
+            </section>
+        </article>
+    </div>
+    
+    <footer>
+        <ul>
+            <li><a href="#">Política de Privacidade</a></li>
+            <li><a href="#">Ajuda</a></li>
+            <li><a href="#">Cookies</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

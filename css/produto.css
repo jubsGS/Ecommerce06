@@ -1,0 +1,347 @@
+body{
+    text-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    gap: 0px;
+
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr auto;
+    background-color: rgb(255, 255, 255);
+    font-size: 16px;
+}
+    body ul{
+        list-style-type: none;
+        padding: 0px;
+    }
+
+    body a{
+        text-decoration: none;
+    }
+    body a:hover{
+        cursor: pointer;
+    }
+
+    body i:hover{
+        cursor: pointer;
+    }
+
+header{
+    grid-column: 1;
+    grid-row: 1;
+    position: fixed;
+
+    height: 50px;
+    width: 100%;
+    background-color:rgb(225, 248, 174);
+    padding: 0px;
+}
+    *>header .navTopo a:hover{
+        color: rgb(27, 65, 9);
+    }
+    .navTopo ul{
+        display: flex;
+        justify-content: space-between;
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+    .navTopo ul li {
+        display: inline;
+        position: relative;
+        margin-left: 0px;
+    }
+    .icons{
+        width: auto;
+        display: inline;
+        position: relative;
+    }
+    .navTopo .icons{
+        display: inline;
+        position: relative;
+        margin-inline: 0px;
+        width: 200px;
+    }
+    .navTopo ul li a{
+        width: auto;
+        height: auto;
+        text-decoration: none;
+        color: rgb(52, 117, 52);
+    }
+
+main{
+    grid-column: 1;
+    grid-row: 2;
+    height: auto;
+    margin-top: 30px;
+}   
+    main .imagem img{
+        width: 100%;
+        height: auto;
+        border-radius: 30px;
+    }
+    main .info{
+        width: auto;
+        height: 100%;
+    }
+    main .info button{
+        margin-top: 10px;
+        border-radius: 10px;
+        border: 0px;
+        background-color: black;
+        color:rgb(243, 255, 217);
+        width: 100%;
+        height: 35px;
+        transition: all 0.5s;
+    }
+    main .info button:hover{background-color: rgb(238, 255, 201);
+        color: black;
+    }
+    main .info a{
+        color: rgb(27, 65, 9);
+        text-decoration: underline;
+    }
+    main .info a:hover{
+        cursor: pointer;
+    }
+    main .info h1{
+        font-size: 200%;
+    }
+    
+    main .info h2{
+        font-size: 120%;
+    }
+
+
+    main #produtosRec section:hover{
+        cursor: pointer;
+    }
+    main #produtosRec section{
+        text-decoration: none;
+        color: black;
+    }
+
+
+    main #recomendacao h1{
+        color: rgb(0, 0, 0);
+        min-width: 100%;
+        text-align: left;
+    }
+    main #produtosRec img{
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        border-radius: 10px;
+    }
+footer{
+    grid-column: 1;
+    grid-row: 3;   
+}
+    footer #contato p{
+        margin-left: 2%;
+        color: gray;
+    }
+    footer a{
+        text-decoration: none;
+        color: grey;
+    }
+    footer li{
+        list-style-type: none;
+    }
+    footer #sobre h1{
+        font-size: 80%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    footer #textSobre{ 
+        text-align: center;
+    }
+@media (min-width: 768px){
+    main{
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, auto);
+    }
+        main .produto{
+            grid-column: 1;
+            grid-row: 1;
+    
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            height: auto;
+            width: 100%;
+        }
+            main .imagem{
+                grid-row: 1;
+                grid-column: 1;
+            }
+            main .info{
+                grid-row: 1;
+                grid-column: 2;
+                
+                margin-left: 5%;
+            }
+        main #recomendacao{
+            margin-top: 50px;
+            margin-bottom: 100px;
+        }
+        main #produtosRec{
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            grid-template-rows: repeat(auto, auto);
+            gap: 15px;
+        }
+            main #produtosRec section{
+                grid-column: auto;
+                grid-row: auto;
+            }
+                
+    footer{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr;
+        width: 100%;
+        height: auto;    
+        }
+        footer #efemero{
+            grid-column: 1;
+            grid-row: 1;
+            background-color:rgb(225, 248, 174);
+        }
+        footer #contato{
+            grid-column: 2;
+            grid-row: 1; 
+            background-color:rgb(225, 248, 174);
+        }
+}
+@media (min-width: 425px) and (max-width: 768px) {
+    main{
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, auto);
+    }
+        main .produto{
+            grid-column: 1;
+            grid-row: 1;
+    
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(2, auto);
+            height: auto;
+            width: 100%;
+        }
+            main .imagem{
+                grid-row: 1;
+                grid-column: 1;
+            }
+            main .info{
+                grid-row: 2;
+                grid-column: 1;
+                margin-bottom: 0px;
+            }
+        main #recomendacao{
+            margin-top: 50px;
+            margin-bottom: 100px;
+        }
+        main #produtosRec{
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            grid-template-rows: repeat(auto, auto);
+            gap: 15px;
+        }
+            main #produtosRec section{
+                grid-column: auto;
+                grid-row: auto;
+            }
+    footer{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr;
+        width: 100%;
+        height: auto;    
+        }
+        footer #efemero{
+            grid-column: 1;
+            grid-row: 1;
+            background-color:rgb(225, 248, 174);
+        }
+        footer #contato{
+            grid-column: 2;
+            grid-row: 1; 
+            background-color:rgb(225, 248, 174);
+        }
+}
+@media (max-width: 425px){
+    main{
+        font-size: 16px;
+        width: 96%;
+        margin-left: 2%;
+        margin-right: 2%;
+    
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, auto);
+    }
+        main .produto{
+            grid-column: 1;
+            grid-row: 1;
+    
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(2, auto);
+            height: auto;
+            width: 100%;
+        }
+            main .imagem{
+                grid-row: 1;
+                grid-column: 1;
+            }
+            main .info{
+                grid-row: 2;
+                grid-column: 1;
+                margin-bottom: 0px;
+            }
+        main #recomendacao{
+            margin-top: 50px;
+            margin-bottom: 100px;
+        }
+        main #produtosRec{
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(auto, auto);
+            gap: 15px;
+        }
+            main #produtosRec section{
+                grid-column: auto;
+                grid-row: auto;
+            }
+    footer{
+        display: grid;
+        grid-template-columns:1fr;
+        grid-template-rows: auto 1fr;
+        width: 100%;
+        height: auto;    
+        }
+        footer #efemero{
+            grid-column: 1;
+            grid-row: 1;
+            background-color:rgb(225, 248, 174);
+        }
+        footer #contato{
+            grid-column: 1;
+            grid-row: 2; 
+            background-color:rgb(225, 248, 174);
+        }
+}
