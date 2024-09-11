@@ -1,49 +1,105 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="index.css">
+<html><head>
+        <meta charset="8-UTF">
+        <title>Ecommerce</title>
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='https://fonts.googleapis.com/css?family=Newsreader' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+        <script src="https://kit.fontawesome.com/abf8c89fd5.js" crossorigin="anonymous"></script>
     </head>
-<?php
-    include("cabecalho.php");
-    $conn = conecta();
-    if(!$conn){
 
-        exit; //se nn conectar, sai
-    }
-    else{
-        echo"Conectado";
-    }
-    
-    
-    $varSQL = "SELECT * FROM produto WHERE excluido = false";//tabela para a presentar os usuários
+    <body>
+        <header>
+            <nav class="navTopo">
+                <ul>
+                    <li>
+                        <a href="index.html"><strong>EFÊMERO</strong></a>
+                    </li>
 
-    $select = $conn->prepare($varSQL);
-    $select->execute(); //executa sql e seleciona o que é pedido     
-    
+                    <li>
+                        <ul class="icons">
+                            <li><a href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                            <li><a href="login.html"><i class="fa-solid fa-user"></a></i></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
 
-    echo"<div class='produtos'>";
-    while($linha = $select->fetch()){
-        $id = $linha["id_produto"];
-        $nome = $linha["nome"];
-        $desc = $linha["descricao"];
-        $valoruni = $linha["valor_unitario"];
-        $excluido = $linha["excluido"];
-        $dtExclusao = $linha["data_exclusao"];
-        $qntdEstoque = $linha["qtde_estoque"];
-        $aroma = $linha["aroma"];
-        $varFoto = "imagens/p".$id.".jpg";//puxa a imagem da pasta imagem, referente ao id
+        <main>
+            <article id="home">
+                <div id="textHome">
+                    <p><!--textinho informativo do produto-->
+                        <h1><strong>EFÊMERO</strong></h1>
+                    <strong class="slogan">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae libero tincidunt, tempor nibh vitae, lacinia quam. Cras viverra nunc et tortor efficitur porttitor.</strong>
+                    </p>
+                </div>
+            </article>
 
-        $htmlFoto = (file_exists($varFoto) ? "<img src='$varFoto' width=60>" : "<img src='imagens/iconSacola.webp' width=60>");
-        $htmlCarrinho = "<a href='carrinho.php'><button>Adicionar ao carrinho</button></a>";
-    
-        echo"<div class='prod'>
-                <center>
-                    $htmlFoto<br>
-                    <strong>$nome</strong><br>
-                    Aroma: $aroma<br><br>
-                    <i>R$ $valoruni</i><br>
-                    $htmlCarrinho
-                </center>
-            </div>";
-    }
-    echo"</div>";
-?>
+            <article id="velas">
+                <h1>Nossos produtos</h1>
+                <?php
+                    include("cabecalho.php");
+                    $conn = conecta();
+                    if(!$conn){
+
+                        exit; //se nn conectar, sai
+                    }
+                    
+                    $varSQL = "SELECT * FROM produto WHERE excluido = false";//tabela para a presentar os usuários
+
+                    $select = $conn->prepare($varSQL);
+                    $select->execute(); //executa sql e seleciona o que é pedido     
+
+                    echo"<div id= 'produtos'>";
+                    while($linha = $select->fetch()){
+                        $id = $linha["id_produto"];
+                        $nome = $linha["nome"];
+                        $desc = $linha["descricao"];
+                        $valoruni = $linha["valor_unitario"];
+                        $varFoto="img/p".$linha['id_produto'].".jpg";
+                    
+                        echo"<a href='produtos.php?id=".$linha['id_produto']."'>
+                                        <section>
+                                            <img src='$varFoto'>
+                                            
+                                            <p>
+                                                <h2>$nome</h2>
+                                                <p>$desc</p>
+                                                R$ $valoruni
+                                            </p>
+                                        </section>
+                                    </a>";
+                    }
+                    echo"</div>";
+                ?>
+            </article>
+
+            <article id="sobre">
+                <div id="sobreTxt">
+                <h1>Sobre Nós</h1>
+                    <br>
+                    Para ver mais informações sobre nossa equipe e projeto, clique no botão abaixo.    
+                    <br>
+                    <a href="sobrenos.html">
+                        <button>Veja mais</button>
+                    </a>
+                </div>
+            </article>
+        </main>
+        
+        <footer>
+            <div id="efemero">
+                <h3>Efêmero - Velas Artesanais</h3>
+            </div>
+
+            <div id="contato">
+                <h3>Contato</h3>
+                    <p>
+                        efemero@gmail.com<br>
+                        Colégio Técnico Industrial "Prof. Isaac Portal Roldán"-UNESP - Bauru/SP, 17033-260
+                    </p>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -115,10 +115,10 @@ main{
         grid-row: 2;
         margin-top: 50px;
     }
-        main #velas section:hover{
+        main #velas div:hover{
             cursor: pointer;
         }
-        main #velas section{
+        main #velas div{
             text-decoration: none;
             color: black;
         }
@@ -202,7 +202,7 @@ footer{
         gap: 20px;
         font-size: 16px;
     }
-        main #velas section{
+        main #velas #produtos div{
             height: auto;
             min-width: auto;
 
@@ -255,7 +255,7 @@ footer{
         gap: 20px;
         font-size: 16px;
     }
-        main #velas section{
+        main #velas div{
             height: auto;
             min-width: auto;
 
@@ -308,7 +308,7 @@ footer{
         gap: 20px;
         font-size: 16px;
     }
-        main #velas section{
+        main #velas div{
             height: auto;
             min-width: auto;
 

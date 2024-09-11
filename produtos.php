@@ -1,105 +1,119 @@
 <?php
     include("cabecalho.php");
-    //formulario para passar o nome de um produto que deseja filtrar no banco de dados
-    echo "
-        <form action='' method='post' enctype='multipart/form-data'>
-        <h2><label for=''>Produtos Ecommerce</label></h2>
-
-        <label for='nome'>Nome:</label>
-        <input type='text' name='nome'><br><br>
-
-        <button type='submit'>Enviar dados</button>
-        </form>";
-
-    $conn = conecta();//conexao
-
-    if($_POST){
-        $filtro='%'.$_POST['nome'].'%';//prepara o formato do filtro, dentro do if diz que deve procurar qualquer coisa que tenha o valor passado no INICIO ou MEIO do nome cadastrado
-    }else{
-        $filtro="%%";//se nn, basta selecionar td
+    $conn = conecta();
+    if(!$conn){
+        exit; //se nn conectar, sai
     }
-
-    $sql="SELECT * from produto  where (nome like :filtro) ";//instrução para chamar no banco de dados tudo oq estiver no produto que tenha o valor no nome
-    
-
-    $select = $conn->prepare($sql);//preparação da instrução
-    $select->bindParam(':filtro', $filtro);//validação de parametro
-    $select->execute();//execução da instrução sql
-
-    echo "<table border=1>";//criação da tabela
-    echo "<tr>
-                <th>imagem</th>
-                <th>nome</th>
-                <th>descrição</th>
-                <th>valor</th>
-                <th>produto excluído?</th>
-                <th>data exclusão</th>
-                <th>estoque</th>
-                <th>aroma</th>
-            </tr>";
-        
-    while ($linha = $select->fetch()) {
-        
-        $varFoto="imagens/p".$linha['id_produto'].".jpg";
-        echo "<td>";
-        if(file_exists($varFoto)){//se existir, chama
-            echo "<img src='$varFoto' width=80>";
-        }else{//ao contrario, mostra um icone sem que seja aquele de arquivo corrompido
-            echo "<img src='imagens/iconSacola.webp' width=80>";
-        }
-        echo "</td>";
-
-        echo "<td>";
-        echo $linha["nome"];
-        echo "</td>";
-
-        echo "<td>";
-        echo $linha["descricao"];
-        echo "</td>";
-
-        echo "<td>";
-        echo $linha["valor_unitario"];
-        echo "</td>";
-
-        echo "<td>";
-        if($linha["excluido"]==false){//verifica se o produto esta inserido ou nn na tabela
-            echo "não";
-        }
-        else{
-            echo "sim";
-        }
-        echo "</td>";
-
-        if($linha["excluido"]==false){//verifica se o produto esta inserido ou nn na tabela, se sim, vai adicionar a data em que foi excluido
-            echo "<td>";
-            echo "...";
-            echo "</td>";
-        }
-        else{
-            echo "<td>";
-            echo $linha["data_exclusao"];
-            echo "</td>";
-        }
-
-        echo "<td>";
-        echo $linha["qtde_estoque"];
-        echo "</td>";
-
-        echo "<td>";
-        echo $linha["aroma"];
-        echo "</td>";
-
-        echo "<td>";
-        echo "<a href='editar_produto.php?id=".$linha['id_produto']."'>Alterar</a>";
-        echo "</td>";
-
-        echo "<td>";
-        echo "<a href='remover_produto.php?id=".$linha['id_produto']."'>Excluir</a>";
-        echo "</td>";
-
-        echo "</tr>";
-    }
-    echo "</table>";
-
-    echo "<a href='./adicionar_produto.php'>Adicionar</a>";
 ?>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/produto.css">
+        <title>Nome do produto</title>
+        <link href='https://fonts.googleapis.com/css?family=Newsreader' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+        <script src="https://kit.fontawesome.com/abf8c89fd5.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <header>
+            <nav class="navTopo">
+                <ul>
+                    <li>
+                        <a href="index.html"><strong>EFÊMERO</strong></a>
+                    </li>
+
+                    <li>
+                        <ul class="icons">
+                            <li><a href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                            <li><a href="login.html"><i class="fa-solid fa-user"></a></i></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <article class="produto">
+                <?php
+                    $id = $_GET['id'];
+
+                    $varSQL = "SELECT * FROM produto WHERE id_produto = :id_produto";//mesmo esquema do alterar usuario
+                
+                    $select = $conn->prepare($varSQL);
+                    $select->bindParam(':id_produto', $id);
+                    $select->execute();
+                    
+                    while($linha = $select->fetch()){
+                        $id = $linha["id_produto"];
+                        $nome = $linha["nome"];
+                        $desc = $linha["descricao"];
+                        $valoruni = $linha["valor_unitario"];
+                        $varFoto="img/p".$linha['id_produto'].".jpg";
+
+                        echo"<div id= 'produto'>
+                                            <img src='$varFoto'>
+                                </div>";
+                        
+                        echo"<section class='info'>
+                                <h1>$nome</h1>
+                                <hr>
+                                <h2>$desc</h2>
+                                <hr>
+                                <h3>R$$valoruni</h3><br>
+                                <button type='submit'>Adicionar ao carrinho</button><br><br>
+                                <p><i>Dúvidas?</i> Contate-nos em algumas das <a href='#contato'>opções</a> abaixo</p>
+                              </section>";
+                    }
+                ?>
+            </article>
+            
+            <article id="recomendacao">
+                <h1>Produtos que voce pode se interessar</h1>
+                <?php
+                    $varSQL = "SELECT * FROM produto WHERE excluido = false";//tabela para a presentar os usuários
+
+                    $select = $conn->prepare($varSQL);
+                    $select->execute(); //executa sql e seleciona o que é pedido     
+
+                    echo"<div id= 'produtosRec'>";
+                    while($linha = $select->fetch()){
+                        $id = $linha["id_produto"];
+                        $nome = $linha["nome"];
+                        $desc = $linha["descricao"];
+                        $valoruni = $linha["valor_unitario"];
+                        $varFoto="img/p".$linha['id_produto'].".jpg";
+
+                        echo"<a href='produtos.php?id=".$linha['id_produto']."'>
+                                        <section>
+                                            <img src='$varFoto'>
+                                            
+                                            <p>
+                                                <h2>$nome</h2>
+                                                <p>$desc</p>
+                                                R$ $valoruni
+                                            </p>
+                                        </section>
+                                    </a>";
+                    }
+                    echo"</div>";
+                ?>
+            </article>
+        </main>
+
+        <footer>
+            <div id="efemero">
+                <h3>Efêmero - Velas Artesanais</h3>
+            </div>
+
+            <div id="contato">
+                <h3>Contato</h3>
+                    <p>
+                        efemero@gmail.com<br>
+                        Colégio Técnico Industrial "Prof. Isaac Portal Roldán"-UNESP - Bauru/SP, 17033-260
+                    </p>
+            </div>
+        </footer>
+    </body>
+</html>
