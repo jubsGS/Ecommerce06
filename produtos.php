@@ -21,7 +21,7 @@
             <nav class="navTopo">
                 <ul>
                     <li>
-                        <a href="index.html"><strong>EFÊMERO</strong></a>
+                        <a href="index.php"><strong>EFÊMERO</strong></a>
                     </li>
 
                     <li>
@@ -50,7 +50,7 @@
                         $nome = $linha["nome"];
                         $desc = $linha["descricao"];
                         $valoruni = $linha["valor_unitario"];
-                        $varFoto="img/p".$linha['id_produto'].".jpg";
+                        $varFoto="imagens/p".$linha['id_produto'].".jpg";
 
                         echo"<div id= 'produto'>
                                             <img src='$varFoto'>
@@ -83,7 +83,7 @@
                         $nome = $linha["nome"];
                         $desc = $linha["descricao"];
                         $valoruni = $linha["valor_unitario"];
-                        $varFoto="img/p".$linha['id_produto'].".jpg";
+                        $varFoto="imagens/p".$linha['id_produto'].".jpg";
 
                         echo"<a href='produtos.php?id=".$linha['id_produto']."'>
                                         <section>
