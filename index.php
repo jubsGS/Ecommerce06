@@ -1,4 +1,5 @@
-<html><head>
+<html>
+    <head>
         <meta charset="8-UTF">
         <title>Ecommerce</title>
         <link rel="stylesheet" type="text/css" href="css/index.css">

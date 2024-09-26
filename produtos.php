@@ -26,8 +26,8 @@
 
                     <li>
                         <ul class="icons">
-                            <li><a href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                            <li><a href="login.html"><i class="fa-solid fa-user"></a></i></li>
+                            <li><a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                            <li><a href="login.php"><i class="fa-solid fa-user"></a></i></li>
                         </ul>
                     </li>
                 </ul>

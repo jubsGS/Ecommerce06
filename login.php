@@ -14,13 +14,13 @@
         <nav class="navTopo">
             <ul>
                 <li>
-                    <a href="index.html"><strong>EFÊMERO</strong></a>
+                    <a href="index.php"><strong>EFÊMERO</strong></a>
                 </li>
 
                 <li>
                     <ul class="icons">
-                        <li><a href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                        <li><a href="login.html"><i class="fa-solid fa-user"></a></i></li>
+                        <li><a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                        <li><a href="login.php"><i class="fa-solid fa-user"></a></i></li>
                     </ul>
                 </li>
             </ul>
@@ -59,7 +59,7 @@
                 </form>
                 <div class='Criar'>
                     <p>Novo por aqui?</p>
-                    <a href='criar.html'><button type='button'>Criar Conta</button></a>
+                    <a href='criar.php'><button type='button'>Criar Conta</button></a>
                 </div>";
             
             if($_POST){
