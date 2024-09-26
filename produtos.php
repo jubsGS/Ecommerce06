@@ -49,12 +49,15 @@
                         $id = $linha["id_produto"];
                         $nome = $linha["nome"];
                         $desc = $linha["descricao"];
+                        $qtde_estoque = $linha["qtde_estoque"];
                         $valoruni = $linha["valor_unitario"];
                         $varFoto="imagens/p".$linha['id_produto'].".jpg";
 
                         echo"<div id= 'produto'>
                                             <img src='$varFoto'>
                                 </div>";
+
+                                
                         
                         echo"<section class='info'>
                                 <h1>$nome</h1>
@@ -62,9 +65,16 @@
                                 <h2>$desc</h2>
                                 <hr>
                                 <h3>R$$valoruni</h3><br>
-                                <button type='submit'>Adicionar ao carrinho</button><br><br>
+                                
+                               
                                 <p><i>Dúvidas?</i> Contate-nos em algumas das <a href='#contato'>opções</a> abaixo</p>
-                              </section>";
+                              ";
+                        if ($qtde_estoque > 0) {
+                            echo "<a href='carrinho.php?id_produto=$id&operacao=incluir'> <button type='submit'>Adicionar ao carrinho</button></a><br><br></section>";
+                        } else {
+                            echo "<button type='submit'>Adicionar ao carrinho</button><br><br></section>";
+                        }
+                        echo "</center></td>";
                     }
                 ?>
             </article>

@@ -36,12 +36,10 @@
                 exit; //se nn conectar, sai
             }
 
-            $id = $_GET['id'];
-
             $varSQL = "SELECT * FROM usuario WHERE excluido = false AND id_usuario = :id_usuario";//tabela para a presentar os usuários
 
             $select = $conn->prepare($varSQL);
-            $select->bindParam(':id_usuario', $id);
+            $select->bindParam(':id_usuario', $_SESSION['sessaoId']);
             $select->execute(); //executa sql e seleciona o que é pedido     
 
             echo"<div id='conta'>";
@@ -65,9 +63,11 @@
                     </div>
                     
                     <div class='Conta'>
-                        <a href='alterar_usuario.php'><button type='button'>Alterar Usuário</button></a>
+                        <a href='editar_usuario.php'><button type='button'>Alterar Usuário</button></a>
                     
-                        <a href='alterar_usuario.php'><button type='button'>Excluir Usuário</button></a>
+                        <a href='remover_usuario.php'><button type='button'>Excluir Usuário</button></a>
+
+                        <a href='logout.php'><button type='button'>Sair da Conta</button></a>
                     </div>";
             }
             echo"</div>";

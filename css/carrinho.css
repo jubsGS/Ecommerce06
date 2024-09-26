@@ -135,34 +135,77 @@ main{
       grid-row: auto;
       grid-column: 1;
 
+      display: grid;
+      grid-template-columns: auto 2fr;
+      grid-template-rows: 1fr;
+
       border-radius: 15px;
       background-color: rgb(225, 248, 174);
       width: 96%;
     }
       main .produto img{
-        height: 100%;
+        grid-row: 1;
+        grid-column: 1;
+
         float:left;
         border-radius: 15px;
+        height: auto;
       }
       main .produto .info{
+        grid-row: 1;
+        grid-column: 2;
+
         display:grid;
         grid-row: repeat(3, 1fr);
-        grid-column: 1fr;
+        grid-column: 1fr 1fr;
 
         height: 216px;
         margin: 0px;
       }
-      main .produto .qntd{
-        width: auto;
-        grid-column: 1;
-        grid-row: 3;
-      }
-      main .produto .qntd button{
-        height: 19px;
-        width: 19px;
-        padding: 0px;
-        margin: 0px;
-      }
+        main .produto .nomeP{
+          grid-row: 1;
+          grid-column: 1;
+        }
+        main .produto .precoU{
+          grid-row: 1;
+          grid-column: 2;
+        }
+
+        main .info .adicionaExclui{
+          grid-column: 1;
+          grid-row: 3;
+        }
+          main .info .adicionaExclui ul{
+            display: flex;
+            justify-content: space-between;
+            margin: 0px;
+          }
+          main .info .adicionaExclui ul li {
+            display: inline;
+            position: relative;
+            margin-left: 0px;
+          }
+
+          main .info .adicionaExclui > li{
+            width: auto;
+            display: inline;
+            position: relative;
+            margin-inline: 0px;
+          }
+
+        main .produto .subT{
+          grid-row: 3;
+          grid-column: 2;
+        }
+
+          
+        main .produto .qntd button{
+          height: 19px;
+          width: 19px;
+          padding: 0px;
+          margin: 0px;
+        }
+      
 
      footer{
         grid-row: 3;
@@ -192,6 +235,10 @@ main{
   main .produto{
     height: 216px;
   }
+  main .produto img{
+    min-width: 162px;
+    height: 47%;
+  }
   footer{
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -219,6 +266,11 @@ main{
   main .produto{
     height: 162px;
   }
+  
+  main .produto img{
+    min-width: 162px;
+    height: 36%;
+  }
   footer{
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -245,6 +297,10 @@ main{
   }
   main .produto{
     height: 54px;
+  }
+  ain .produto img{
+    min-width: 162px;
+    height: 16%;
   }
   footer{
       display: grid;

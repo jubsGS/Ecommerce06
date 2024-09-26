@@ -81,7 +81,11 @@
 
                     while($linha = $select->fetch()){
                         $id = $linha["id_usuario"];
-                        echo"<a href='index.php?id=".$linha['id_usuario']."'> <button type='submit' value='Enviar'>Voltar ao Login</button> </a>";
+                        $_SESSION['sessaoId'] = $id;
+
+                        //echo"<a href='index.php?id=".$linha['id_usuario']."'> <button type='submit' value='Enviar'>Voltar ao Login</button> </a>";
+
+                        header("location:perfil.php");
                     }
 
                    

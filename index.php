@@ -2,11 +2,12 @@
     <head>
         <meta charset="8-UTF">
         <title>Ecommerce</title>
-        <link rel="stylesheet" type="text/css" href="css/index.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='https://fonts.googleapis.com/css?family=Newsreader' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
         <script src="https://kit.fontawesome.com/abf8c89fd5.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/index.css">
+        
     </head>
 
     <body>
@@ -19,10 +20,18 @@
 
                     <li>
                         <ul class="icons">
-                            <li><a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                            <li><a href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
                             <?php
+                                include("cabecalho.php");
+                                $conn = conecta();
+                                if(!$conn){
+            
+                                    exit; //se nn conectar, sai
+                                }
+
+                                
                                 if(isset( $_SESSION['sessaoLogin'])){
-                                    echo"<li><a href='perfil.php'><i class='fa-solid fa-user'></a></i></li>";
+                                    echo"<li><a href='perfil.php?id=".$_SESSION['sessaoId']."'><i class='fa-solid fa-user'></a></i></li>";
                                 }
                                 else{
                                     echo"<li><a href='login.php'><i class='fa-solid fa-user'></a></i></li>";
@@ -47,13 +56,6 @@
             <article id="velas">
                 <h1>Nossos produtos</h1>
                 <?php
-                    include("cabecalho.php");
-                    $conn = conecta();
-                    if(!$conn){
-
-                        exit; //se nn conectar, sai
-                    }
-                    
                     $varSQL = "SELECT * FROM produto WHERE excluido = false";//tabela para a presentar os usuários
 
                     $select = $conn->prepare($varSQL);

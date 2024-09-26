@@ -15,13 +15,13 @@
     <nav class="navTopo">
         <ul>
             <li>
-                <a href="index.html"><strong>EFÊMERO</strong></a>
+                <a href="index.php"><strong>EFÊMERO</strong></a>
             </li>
 
             <li>
                 <ul class="icons">
-                    <li><a href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                    <li><a href="login.html"><i class="fa-solid fa-user"></a></i></li>
+                    <li><a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li><a href="login.php"><i class="fa-solid fa-user"></a></i></li>
                 </ul>
             </li>
         </ul>
@@ -43,19 +43,27 @@
         <a href="finalizarCompra.html"><button class="btcompra">Finalizar Compra</button></a>
       </div>
     </article>
+    
+    <article class='itens'>
+      <div class='produto'>
+          <img src='imagens/p1.jpg' alt='vela' height='auto'>
 
-    <article class="itens">
-      <div class="produto">
-        <img src="img/vela.png" alt="vela">
-        <p class="info">
-          
-        </p>
-      </div>
+          <div class='info'>
+              <h3 class='nomeP'>Nome Produto</h3>
+              <h4 class='precoU'>preço unitario</h4>
 
-      <div class="produto">
-        <img src="img/vela.png" alt="vela">
+              <div class='adicionaExclui'>
+                <ul>
+                  <li><a href='carrinho.php'> <button type='button'>Adicionar</button></a></li>
+                  <li><p>$linha['quantidade']</p></li>
+                  <li><a href='carrinho.php'><button type='button'>Excluir</button></a></li>
+                </ul>
+              </div>
+
+              <h4 class='subT'>Subtotal</h4>
+          </div>
       </div>
-    </article>
+  </article>
     
   </main> 
 
@@ -74,3 +82,4 @@
   </footer>
 </body>
 </html>
+
