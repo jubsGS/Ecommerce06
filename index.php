@@ -18,8 +18,15 @@
 
                     <li>
                         <ul class="icons">
-                            <li><a href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                            <li><a href="login.html"><i class="fa-solid fa-user"></a></i></li>
+                            <li><a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                            <?php
+                                if(isset( $_SESSION['sessaoLogin'])){
+                                    echo"<li><a href='perfil.php'><i class='fa-solid fa-user'></a></i></li>";
+                                }
+                                else{
+                                    echo"<li><a href='login.php'><i class='fa-solid fa-user'></a></i></li>";
+                                }
+                            ?>
                         </ul>
                     </li>
                 </ul>
@@ -55,7 +62,6 @@
                     while($linha = $select->fetch()){
                         $id = $linha["id_produto"];
                         $nome = $linha["nome"];
-                        $desc = $linha["descricao"];
                         $valoruni = $linha["valor_unitario"];
                         $varFoto="imagens/p".$linha['id_produto'].".jpg";
                     
@@ -65,7 +71,6 @@
                                             
                                             <p>
                                                 <h2>$nome</h2>
-                                                <p>$desc</p>
                                                 R$ $valoruni
                                             </p>
                                         </section>

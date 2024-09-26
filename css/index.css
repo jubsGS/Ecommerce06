@@ -114,14 +114,16 @@ main{
         grid-column: 1;
         grid-row: 2;
         margin-top: 50px;
+        
     }
         main #velas div:hover{
             cursor: pointer;
         }
-        main #velas div{
+        main #velas a{
             text-decoration: none;
             color: black;
         }
+
         main #velas h1{
             color: rgb(0, 0, 0);
             min-width: 100%;
@@ -195,9 +197,14 @@ footer{
         main #textHome .slogan{
             font-size: 130%;
         }
+    main #velas{
+        margin-left: 15%;
+        margin-right: 15%;
+        width: 70%;
+    }
     main #velas #produtos{
         display: grid;
-        grid-template-columns: repeat(3, auto);
+        grid-template-columns: repeat(2, auto);
         grid-template-rows: repeat(auto, auto);
         gap: 20px;
         font-size: 16px;
@@ -248,6 +255,12 @@ footer{
         main #textHome .slogan{
             font-size: 110%;
         }
+
+    main #velas{
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 80%;
+    }     
     main #velas #produtos{
         display: grid;
         grid-template-columns: repeat(2, auto);
@@ -301,6 +314,12 @@ footer{
         main #textHome .slogan{
             font-size: 90%;
         }
+
+    main #velas{
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 90%;
+    }
     main #velas #produtos{
         display: grid;
         grid-template-columns: 1fr;

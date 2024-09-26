@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="PT-BR">
 <head>
     <meta charset="UTF-8">
@@ -29,22 +28,71 @@
     </header>
     
     <main class="login-container">
-        <form action="#" method="POST">
-            <div class="Dados">
-                <label><h2>BEM-VINDO DE VOLTA!</h2><br></label>
-                <label for="username">Nome de usuário</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="Dados">
-                <label for="password">Senha</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">Login</button>
-        </form>
-        <div class="Criar">
-            <p>Novo por aqui?</p>
-            <a href="criar.html"><button type="button">Criar Conta</button></a>
-        </div>
+        <?php 
+            include("cabecalho.php");
+
+            $_SESSION['sessaoConectado']=false;
+            $_SESSION['sessaoLogin']="";
+
+            $conn = conecta();
+
+            if(isset($_COOKIE['loginCookie'])){
+                $loginCookie=$_COOKIE['loginCookie'];
+            }
+            else{
+                $loginCookie='';
+            }
+
+            echo" <form name='formlogin' method='post' action='#'>
+                    <div class='Dados'>
+                        <label><h2>BEM-VINDO DE VOLTA!</h2><br></label>
+                        <label for='email'>Email</label>
+                        <input type='text' id='login' name='login' value='$loginCookie'>
+                    </div>
+
+                    <div class='Dados'>
+                        <label for='password'>Senha</label>
+                        <input type='password' id='senha' name='senha'>
+                    </div>
+
+                    <button type='submit' value='Enviar'>Login</button>
+                </form>
+                <div class='Criar'>
+                    <p>Novo por aqui?</p>
+                    <a href='criar.html'><button type='button'>Criar Conta</button></a>
+                </div>";
+            
+            if($_POST){
+                $login=$_POST['login'];
+                $senha=$_POST['senha'];
+                setcookie('loginCookie', $login, time()+86400);
+            
+                $_SESSION['sessaoConectado']=ValidaLogin($login, $senha, $admin);
+                
+                if ( $_SESSION['sessaoConectado'] ) {    
+                    $_SESSION['sessaoLogin']=$login;
+                    $_SESSION['sessaoAdmin']=$admin;
+
+                    $varSQL = "SELECT * FROM usuario WHERE email =:email";//tabela para a presentar os usuários
+
+                    $select = $conn->prepare($varSQL);
+                    $select->bindParam(':email', $login);
+                    $select->execute();//executa sql e seleciona o que é pedido     
+
+                    while($linha = $select->fetch()){
+                        $id = $linha["id_usuario"];
+                        echo"<a href='index.php?id=".$linha['id_usuario']."'> <button type='submit' value='Enviar'>Voltar ao Login</button> </a>";
+                    }
+
+                   
+                
+                } else {
+                    echo "<div class='Dados'>
+                        <label for='erro'>Não foi possível encontrar esse usuário, por favor verifique as credenciais preenchidas.</label>
+                    </div>";
+                }
+            }
+        ?>
     </main>
     <footer>
         <ul>
@@ -55,45 +103,3 @@
     </footer>
 </body>
 </html>
-<?php 
-    include("cabecalho.php");
-
-    $_SESSION['sessaoConectado']=false;
-    $_SESSION['sessaoLogin']="";
-
-    $conn = conecta();
-
-    if(isset($_COOKIE['loginCookie'])){
-        $loginCookie=$_COOKIE['loginCookie'];
-    }
-    else{
-        $loginCookie='';
-    }
-
-    echo "
-        <h1>Login do Usuário</h1>
-        <form name='formlogin' method='post' action=''>
-        <br>Email<input type='text' name='login' value='$loginCookie'>
-        <br>Senha<input type='password' name='senha'>
-        <br><input type='submit' value='Enviar'>
-        </form>";
-    
-    if($_POST){
-        $login=$_POST['login'];
-        $senha=$_POST['senha'];
-        setcookie('loginCookie', $login, time()+86400);
-    
-        $_SESSION['sessaoConectado']=ValidaLogin($login, $senha, $admin);
-        
-        if ( $_SESSION['sessaoConectado'] ) {    
-            $_SESSION['sessaoLogin']=$login;
-            $_SESSION['sessaoAdmin']=$admin;
-
-            header('Location:login.php');
-        
-        } else {
-            echo "<b>Usuario ou senha nao encontrado</b>
-                <br><br><a href='index.php'>Voltar</a>";
-        }
-    }
-?>

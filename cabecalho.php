@@ -8,15 +8,4 @@
     }else{
         $sessaoConectado=false;
     }
-
-    // if($sessaoConectado){
-    //     $idSessao=session_id();
-    //     echo "<a href='logout.php'>Sair</a>
-    //         <br>Ola, $login
-    //         <br>
-    //         <a href='index.php'>Produtos</a>
-    //         <a href='usuarios.php'>Usuarios</a>";
-    // }else{
-    //     echo "<a href='login.php'>Login</a>";
-    // }
 ?>
