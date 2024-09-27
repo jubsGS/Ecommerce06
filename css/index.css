@@ -135,6 +135,18 @@ main{
             text-align: center;
             border-radius: 10px;
         }
+        main #velas #produtos div{
+            height: auto;
+            min-width: auto;
+
+            margin: 0px;
+            padding: 0px;
+
+            text-align: auto;
+
+            grid-column: auto;
+            grid-row: auto;
+        }
     main #sobre{
         grid-column: 1;
         grid-row: 3;
@@ -209,18 +221,7 @@ footer{
         gap: 20px;
         font-size: 16px;
     }
-        main #velas #produtos div{
-            height: auto;
-            min-width: auto;
-
-            margin: 0px;
-            padding: 0px;
-
-            text-align: auto;
-
-            grid-column: auto;
-            grid-row: auto;
-        }
+        
         main #velas h1{
             font-size: 40px;
         }
@@ -268,18 +269,6 @@ footer{
         gap: 20px;
         font-size: 16px;
     }
-        main #velas div{
-            height: auto;
-            min-width: auto;
-
-            margin: 0px;
-            padding: 0px;
-
-            text-align: auto;
-
-            grid-column: auto;
-            grid-row: auto;
-        }
         main #velas h1{
             font-size: 30px;
         }
@@ -327,18 +316,6 @@ footer{
         gap: 20px;
         font-size: 16px;
     }
-        main #velas div{
-            height: auto;
-            min-width: auto;
-
-            margin: 0px;
-            padding: 0px;
-
-            text-align: auto;
-
-            grid-column: auto;
-            grid-row: auto;
-        }
         main #velas h1{
             font-size: 20px;
         }

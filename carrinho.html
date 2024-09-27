@@ -46,24 +46,26 @@
     
     <article class='itens'>
       <div class='produto'>
-          <img src='imagens/p1.jpg' alt='vela' height='auto'>
+          <div class='imagem'>
+              <img src='imagens/p1.jpg'>
+          </div>
+          
 
           <div class='info'>
               <h3 class='nomeP'>Nome Produto</h3>
               <h4 class='precoU'>preço unitario</h4>
 
-              <div class='adicionaExclui'>
-                <ul>
-                  <li><a href='carrinho.php'> <button type='button'>Adicionar</button></a></li>
-                  <li><p>$linha['quantidade']</p></li>
-                  <li><a href='carrinho.php'><button type='button'>Excluir</button></a></li>
-                </ul>
+              <div class='qtde'>
+                <div class='adicionaExclui'>
+                  <a href='carrinho.php'> <button type='button'>+</button></a>
+                  <p>$linha['quantidade']</p>
+                  <a href='carrinho.php'><button type='button'>-</button></a>
+                </div>
               </div>
-
               <h4 class='subT'>Subtotal</h4>
           </div>
       </div>
-  </article>
+    </article>
     
   </main> 
 

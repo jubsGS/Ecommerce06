@@ -30,6 +30,7 @@ body{
   }
 
 header{
+  z-index: 1;
   grid-column: 1;
   grid-row: 1;
   position: fixed;
@@ -77,10 +78,6 @@ main{
   
   margin-top: 2%;
   margin-bottom: 2%;
-  margin-left: 5%;
-  margin-right: 5%;
-
-  width: 90%;
 
   display: grid;
   grid-template-columns: 1fr;
@@ -97,115 +94,123 @@ main{
   main .compra{
     background-color: rgb(237, 253, 203);
     border-radius: 15px;
-    grid-row: 2;
+    grid-row: 3;
     grid-column: 1;
     padding: 2%;
   }
-  .compra .btcompra{
-      width: 80%;
-      height: 50px;
-      margin-left: 10%;
+      .compra .btcompra{
+          width: 80%;
+          height: 50px;
+          margin-left: 10%;
 
-      border-radius: 15px;
-      background-color:black;
-      color:rgb(238, 255, 201);
-      transition: all 0.5s;
-  }
-  .compra button:hover{
-      background-color: rgb(238, 255, 201);
-      color: black;
-  }
+          border-radius: 15px;
+          background-color:black;
+          color:rgb(238, 255, 201);
+          transition: all 0.5s;
+      }
+      .compra button:hover{
+          background-color: rgb(238, 255, 201);
+          color: black;
+      }
 
   main .itens{
-    grid-row: 3;
+    grid-row: 2;
     grid-column: 1;
-
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(auto, auto);
-
     margin-top: 1%;
     margin-bottom: 1%;
+
+    width: 100%;
   }
-    main .itens .produto{
-      padding: 2%;
-      margin-top: 1%;
-      margin-bottom: 1%;
+  main .itens >img{
+    z-index: -50;
+  }
+      main .itens .produto{
+        padding: 2%;
+        margin-top: 1%;
+        margin-bottom: 1%;
 
-      grid-row: auto;
-      grid-column: 1;
-
-      display: grid;
-      grid-template-columns: auto 2fr;
-      grid-template-rows: 1fr;
-
-      border-radius: 15px;
-      background-color: rgb(225, 248, 174);
-      width: 96%;
-    }
-      main .produto img{
         grid-row: 1;
         grid-column: 1;
 
-        float:left;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 1fr;
+
         border-radius: 15px;
-        height: auto;
+        background-color: rgb(225, 248, 174);
+        width: 96%;
       }
-      main .produto .info{
-        grid-row: 1;
-        grid-column: 2;
-
-        display:grid;
-        grid-row: repeat(3, 1fr);
-        grid-column: 1fr 1fr;
-
-        height: 216px;
-        margin: 0px;
-      }
-        main .produto .nomeP{
+        main .produto .imagem{
           grid-row: 1;
           grid-column: 1;
+
+          float:left;
+          border-radius: 15px;
+          width: 100%;
+
+          height: auto;
         }
-        main .produto .precoU{
+        main .produto .info{
           grid-row: 1;
           grid-column: 2;
-        }
 
-        main .info .adicionaExclui{
-          grid-column: 1;
-          grid-row: 3;
-        }
-          main .info .adicionaExclui ul{
-            display: flex;
-            justify-content: space-between;
-            margin: 0px;
-          }
-          main .info .adicionaExclui ul li {
-            display: inline;
-            position: relative;
-            margin-left: 0px;
-          }
+          display:grid;
+          grid-row: repeat(3, 1fr);
+          grid-column: repeat(2, auto);
 
-          main .info .adicionaExclui > li{
-            width: auto;
-            display: inline;
-            position: relative;
-            margin-inline: 0px;
-          }
-
-        main .produto .subT{
-          grid-row: 3;
-          grid-column: 2;
-        }
-
-          
-        main .produto .qntd button{
-          height: 19px;
-          width: 19px;
-          padding: 0px;
+          height: 216px;
           margin: 0px;
         }
-      
+          main .produto .nomeP{
+            grid-row: 1;
+            grid-column: 1;
+          }
+          main .produto .precoU{
+            grid-row: 1;
+            grid-column: 2;
+
+            display: flex;
+            justify-content: flex-end;
+          }
+
+          main .info .qtde{
+            grid-column: 1;
+            grid-row: 3;
+          }
+          main .info .adicionaExclui{
+            display: flex;
+            width: auto;
+            position: absolute;
+
+          }
+          main .info .adicionaExclui>*{
+            height: 16px;
+            width: auto;
+
+            margin: 0px;
+          }
+            main .info .adicionaExclui button{
+              margin: 0px;
+              padding: 0px;
+
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              height: 16px;
+              width: 20px;
+
+              border: 0px;
+              border-radius: 5px;
+              background-color: aliceblue;
+            }
+          main .produto .subT{
+            grid-row: 3;
+            grid-column: 2;
+
+            display: flex;
+            justify-content: flex-end;
+          }
 
      footer{
         grid-row: 3;
@@ -231,14 +236,23 @@ main{
 @media (min-width: 768px){
   main .a1{ 
     font-size: 36px;
-  }
+   }
+   main{
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 70%;
+   }
+
   main .produto{
     height: 216px;
   }
-  main .produto img{
-    min-width: 162px;
-    height: 47%;
+  main .produto .imagem img{
+    max-height: 216px;
+    width: auto;
+    border-radius: 15px;
+    position: relative;
   }
+
   footer{
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -260,16 +274,24 @@ main{
 
 /* Tablet: */
 @media (min-width: 425px) and (max-width: 768px){
+  main{
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+  }
+  
   main .a1{ 
     font-size: 26px;
   }
+
   main .produto{
     height: 162px;
   }
-  
-  main .produto img{
-    min-width: 162px;
-    height: 36%;
+  main .produto .imagem img{
+    max-height: 162px;
+    width: auto;
+    border-radius: 15px;
+    position: relative;
   }
   footer{
       display: grid;
@@ -292,16 +314,24 @@ main{
 
 /* Mobile: */
 @media (max-width: 425px){
+  main{
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+  }
+  
   main .a1{ 
     font-size: 20px;
   }
   main .produto{
-    height: 54px;
+    height: 108px;
   }
-  ain .produto img{
-    min-width: 162px;
-    height: 16%;
-  }
+  main .produto .imagem img{
+    max-height: 108px;
+    width: auto;
+    border-radius: 15px;
+    position: relative;
+  } 
   footer{
       display: grid;
       grid-template-columns:1fr;

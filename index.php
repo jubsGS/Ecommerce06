@@ -20,7 +20,7 @@
 
                     <li>
                         <ul class="icons">
-                            <li><a href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                            <li><a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
                             <?php
                                 include("cabecalho.php");
                                 $conn = conecta();
@@ -89,7 +89,7 @@
                     <br>
                     Para ver mais informações sobre nossa equipe e projeto, clique no botão abaixo.    
                     <br>
-                    <a href="sobrenos.html">
+                    <a href="sobrenos.php">
                         <button>Veja mais</button>
                     </a>
                 </div>

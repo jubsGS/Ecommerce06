@@ -53,41 +53,43 @@
                         $valoruni = $linha["valor_unitario"];
                         $varFoto="imagens/p".$linha['id_produto'].".jpg";
 
-                        echo"<div id= 'produto'>
-                                            <img src='$varFoto'>
-                                </div>";
-
+                        echo"   <div class='imgProd'>
+                                    <img src='$varFoto'>
+                                </div>
                                 
-                        
-                        echo"<section class='info'>
+                                <div class='info'>
                                 <h1>$nome</h1>
                                 <hr>
                                 <h2>$desc</h2>
                                 <hr>
+                                <h4>Quantidade de Estoque: $qtde_estoque</h4>
                                 <h3>R$$valoruni</h3><br>
-                                
-                               
-                                <p><i>Dúvidas?</i> Contate-nos em algumas das <a href='#contato'>opções</a> abaixo</p>
-                              ";
-                        if ($qtde_estoque > 0) {
-                            echo "<a href='carrinho.php?id_produto=$id&operacao=incluir'> <button type='submit'>Adicionar ao carrinho</button></a><br><br></section>";
-                        } else {
-                            echo "<button type='submit'>Adicionar ao carrinho</button><br><br></section>";
-                        }
-                        echo "</center></td>";
+                                ";
+
+                            if ($qtde_estoque > 0) {
+                                echo       "<a href='carrinho.php?id_produto=$id&operacao=incluir'> 
+                                                <button type='submit'>Adicionar ao carrinho</button>
+                                                </a><br><br>  
+                                                <p><i>Dúvidas?</i> Contate-nos em algumas das <a href='#contato'>opções</a> abaixo</p> 
+                                            </div>";
+                            } else {
+                                echo "  <button type='submit'>Adicionar ao carrinho</button><br><br>  
+                                            <p><i>Dúvidas?</i> Contate-nos em algumas das <a href='#contato'>opções</a> abaixo</p> 
+                                        </div>";
+                                }
                     }
                 ?>
             </article>
             
             <article id="recomendacao">
-                <h1>Produtos que voce pode se interessar</h1>
                 <?php
-                    $varSQL = "SELECT * FROM produto WHERE excluido = false";//tabela para a presentar os usuários
+                    $varSQL = "SELECT * FROM produto WHERE excluido = false AND id_produto != :id_produto";//tabela para a presentar os usuários
 
                     $select = $conn->prepare($varSQL);
+                    $select->bindParam(':id_produto', $id);
                     $select->execute(); //executa sql e seleciona o que é pedido     
-
-                    echo"<div id= 'produtosRec'>";
+                    
+                    echo"<h1>Produtos que voce pode se interessar</h1>";
                     while($linha = $select->fetch()){
                         $id = $linha["id_produto"];
                         $nome = $linha["nome"];
@@ -95,19 +97,19 @@
                         $valoruni = $linha["valor_unitario"];
                         $varFoto="imagens/p".$linha['id_produto'].".jpg";
 
-                        echo"<a href='produtos.php?id=".$linha['id_produto']."'>
-                                        <section>
-                                            <img src='$varFoto'>
-                                            
-                                            <p>
-                                                <h2>$nome</h2>
-                                                <p>$desc</p>
-                                                R$ $valoruni
-                                            </p>
-                                        </section>
-                                    </a>";
+                        echo"<div id='produtosRec'>
+                                <a href='produtos.php?id=".$linha['id_produto']."'>
+                                    <section>
+                                        <img src='$varFoto'>
+                                        
+                                        <p>
+                                            <h2>$nome</h2>
+                                            R$ $valoruni
+                                        </p>
+                                    </section>
+                                </a>
+                            </div>";
                     }
-                    echo"</div>";
                 ?>
             </article>
         </main>
