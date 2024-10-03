@@ -1,0 +1,148 @@
+body{
+    text-wrap: wrap;
+    width: 100%;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    gap: 0px;
+
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr auto;
+    background-color: rgb(255, 255, 255);
+}
+    body ul{
+        list-style-type: none;
+        padding: 0px;
+    }
+
+    body a{
+        text-decoration: none;
+    }
+    body a:hover{
+        cursor: pointer;
+    }
+
+    body i:hover{
+        cursor: pointer;
+    }
+
+    header{
+        grid-column: 1;
+        grid-row: 1;
+        position: fixed;
+    
+        height: 50px;
+        width: 100%;
+        background-color:rgb(225, 248, 174);
+        
+        padding: 0px;
+    }
+        *>header .navTopo a:hover{
+            color: rgb(27, 65, 9);
+        }
+        .navTopo ul{
+            display: flex;
+            justify-content: space-between;
+            margin-left: 4%;
+            margin-right: 4%;
+            width: 92%;
+        }
+        .navTopo ul li {
+            display: inline;
+            position: relative;
+            margin-left: 0px;
+        }
+        .icons{
+            width: auto;
+            display: inline;
+            position: relative;
+        }
+        .navTopo .icons{
+            display: inline;
+            position: relative;
+            margin-inline: 0px;
+            width: 200px;
+        }
+         .navTopo ul li a{
+            width: auto;
+            height: auto;
+            text-decoration: none;
+            color: rgb(52, 117, 52);
+        }
+main{
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    height: auto;
+
+}
+table{
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgb(171, 234, 171);
+}
+
+table .botoes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+table button{
+    margin-top: 10px;
+    border-radius: 20px;
+    border: 0px;
+    background-color: black;
+    color:rgb(243, 255, 217);
+    width: auto;
+    height: 25px;
+    transition: all 0.5s;
+}
+table button:hover{
+    background-color: rgb(238, 255, 201);
+    color: black;
+}
+
+    
+footer {
+    position: sticky;
+    background-color:rgb(225, 248, 174);
+    text-align: center;
+    grid-row: 3;
+    grid-column: 1;
+    height: 50px;
+    width: calc(100%-20px);
+}
+footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer ul li {
+    display: inline;
+    padding: 10px;
+}
+
+footer ul li a {
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+footer ul li a:hover {
+    color: rgb(12, 13, 9);
+    text-decoration: underline;
+}
+
+@media (min-width: 768px){
+}
+
+/* Tablet: */
+@media (min-width: 425px) and (max-width: 768px){
+}
+
+/* Mobile: */
+@media (max-width: 425px) {
+}

@@ -45,14 +45,17 @@
     <main class="perfil">
         <?php
 
-            $varSQL = "SELECT * FROM usuario WHERE excluido = false AND id_usuario = :id_usuario";//tabela para a presentar os usuários
+            $varSQL = "SELECT * FROM usuario WHERE excluido = false AND 
+                       id_usuario = :id_usuario";
+                       // tabela para a presentar os usuários
 
             $select = $conn->prepare($varSQL);
             $select->bindParam(':id_usuario', $_SESSION['sessaoId']);
             $select->execute(); //executa sql e seleciona o que é pedido     
 
             echo"<div id='conta'>";
-            while($linha = $select->fetch()){
+            $linha = $select->fetch();
+
                 $id = $linha["id_usuario"];
                 $nome = $linha["nome"];
                 $email = $linha["email"];
@@ -60,6 +63,7 @@
                 $telefone = $linha["telefone"];
                 $senha = $linha["senha"];
             
+                echo "sessao id".$_SESSION['sessaoId'];
                 echo"<div class='informacoes'>
                         <div class='img'>";
                         if(file_exists($varFoto)){
@@ -91,13 +95,11 @@
                     
                         <button type='submit'>Enviar dados</button>
                         </form>";
-            }
-            echo"</div>";
 
-                 
-                        
+                                     
             if ( $_POST ) { 
-                $buscaSQL =' UPDATE usuario SET nome = :nome, email = :email, senha = :senha, telefone = :telefone WHERE id_usuario = :id_usuario';
+                $buscaSQL =' UPDATE usuario SET nome = :nome, email = :email, senha = :senha, 
+                telefone = :telefone WHERE id_usuario = :id_usuario';
 
                 $update = $conn->prepare($buscaSQL);
                 $update->bindParam(':nome', $_POST ['nome']);
@@ -106,7 +108,7 @@
                 $update->bindParam(':telefone', $_POST ['telefone']);
                 $update->bindParam(':id_usuario', $_SESSION['sessaoId']);
                 
-                var_dump($update->debugDumpParams());
+                // var_dump($update->debugDumpParams());
 
                 if($update->execute() > 0 )
                 {
@@ -118,6 +120,11 @@
                 }
                 echo "<a href='logout.php'><button type='button'>Voltar ao início</button></a>";
             }
+            
+            echo"</div>";
+
+                 
+           
         ?>
     </main>
     <footer>

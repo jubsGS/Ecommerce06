@@ -78,8 +78,8 @@
                             <a href='remover_usuario.php'><button type='button'>Excluir Usuário</button></a>";
 
                     if($admin = true){
-                        echo"<a href='editar_usuario.php'><button type='button'>Usuários</button></a>
-                            <a href='remover_usuario.php'><button type='button'>Produtos</button></a>";
+                        echo"<a href='usuarios.php'><button type='button'>Usuários</button></a>
+                            <a href='visu_produto.php'><button type='button'>Produtos</button></a>";
                     }
                             
 
