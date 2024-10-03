@@ -20,7 +20,22 @@
                 <li>
                     <ul class="icons">
                         <li><a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                        <li><a href="login.php"><i class="fa-solid fa-user"></a></i></li>
+                        <?php
+                                include("cabecalho.php");
+                                $conn = conecta();
+                                if(!$conn){
+            
+                                    exit; //se nn conectar, sai
+                                }
+
+                                
+                                if(isset( $_SESSION['sessaoLogin'])){
+                                    echo"<li><a href='perfil.php?id=".$_SESSION['sessaoId']."'><i class='fa-solid fa-user'></a></i></li>";
+                                }
+                                else{
+                                    echo"<li><a href='login.php'><i class='fa-solid fa-user'></a></i></li>";
+                                }
+                            ?>
                     </ul>
                 </li>
             </ul>

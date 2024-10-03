@@ -20,7 +20,22 @@
                 <li>
                     <ul class="icons">
                         <li><a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                        <li><a href="login.php"><i class="fa-solid fa-user"></a></i></li>
+                        <?php
+                                include("cabecalho.php");
+                                $conn = conecta();
+                                if(!$conn){
+            
+                                    exit; //se nn conectar, sai
+                                }
+
+                                
+                                if(isset( $_SESSION['sessaoLogin'])){
+                                    echo"<li><a href='perfil.php?id=".$_SESSION['sessaoId']."'><i class='fa-solid fa-user'></a></i></li>";
+                                }
+                                else{
+                                    echo"<li><a href='login.php'><i class='fa-solid fa-user'></a></i></li>";
+                                }
+                            ?>
                     </ul>
                 </li>
             </ul>
@@ -29,12 +44,6 @@
     
     <main class="perfil">
         <?php
-            include("cabecalho.php");
-            $conn = conecta();
-            if(!$conn){
-
-                exit; //se nn conectar, sai
-            }
 
             $varSQL = "SELECT * FROM usuario WHERE excluido = false AND id_usuario = :id_usuario";//tabela para a presentar os usuários
 
@@ -48,6 +57,7 @@
                 $nome = $linha["nome"];
                 $email = $linha["email"];
                 $varFoto="imagens/u".$linha['id_usuario'].".jpg";
+                $adm = $linha["admin"];
             
                 echo"<div class='informacoes'>
                         <div class='img'>
@@ -63,10 +73,17 @@
                     </div>
                     
                     <div class='Conta'>
-                        <a href='editar_usuario.php'><button type='button'>Alterar Usuário</button></a>
-                    
-                        <a href='remover_usuario.php'><button type='button'>Excluir Usuário</button></a>
+                        <div class='botoes'>
+                            <a href='editar_usuario.php'><button type='button'>Alterar Usuário</button></a>
+                            <a href='remover_usuario.php'><button type='button'>Excluir Usuário</button></a>";
 
+                    if($admin = true){
+                        echo"<a href='editar_usuario.php'><button type='button'>Usuários</button></a>
+                            <a href='remover_usuario.php'><button type='button'>Produtos</button></a>";
+                    }
+                            
+
+                echo"   </div>
                         <a href='logout.php'><button type='button'>Sair da Conta</button></a>
                     </div>";
             }

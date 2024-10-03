@@ -100,6 +100,32 @@ main{
     margin-bottom: 8px;
     color: #555;
 }
+.botoes{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+.botoes a{
+    grid-column: auto;
+    grid-row: auto;
+}
+
+.Conta{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+}
+.Conta >*{
+    grid-column: auto;
+    grid-row: auto;
+    gap:5px;
+}
+
+.img img{
+    width: 40vw;
+    border-radius: 50px;
+}
 
 button {
     width: 100%;
