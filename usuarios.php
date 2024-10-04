@@ -108,7 +108,10 @@
             }
 
             echo "  <tr>
-                        <td colspan='4' class='botoes'><a href='adicionarProdutos.php'><button type='button'>Adicionar</button></a> <a href='index.php'><button type='button'>Voltar</button></a></td>
+                        <td><a href='criar.php'><button type='button'>Adicionar</button></a> <a href='index.php'></td>
+                    </tr>
+                    <tr>    
+                        <td><button type='button'>Voltar</button></a></td>
                     </tr>";
             echo"</table>";
         ?>

@@ -50,9 +50,8 @@
 
             echo "<table>
             <tr class='cabecalho'>
-                <td><h3>ID</h3></td>
-                <td><h3>Nome</h3></td>
                 <td><h3>Foto</h3></td>
+                <td><h3>Nome</h3></td>
                 <td><h3>Descrição</h3></td>
                 <td><h3>Valor Unitário</h3></td>
                 <td><h3>Quantidade em Estoque</h3></td>
@@ -62,8 +61,6 @@
             
             while ($linha = $select->fetch()) {
                 echo "<tr class='usuario'>";
-
-                echo"<td>{$linha['id_produto']}</td>";
 
                 echo"<td>";
 
@@ -85,16 +82,17 @@
 
                 echo"<td>{$linha['qtde_estoque']}</td>";
 
-                echo"<td><a href='alterarProdutos.php?id={$linha['id_produto']}'><button type='button'>Alterar</button></a></td>";
+                echo"<td><a href='alterarProdutos.php?id={$linha['id_produto']}'>Alterar</a></td>";
                 
-                echo"<td><a href='removerProdutos.php?id={$linha['id_produto']}'><button type='button'>Excluir</button></a></td>";
+                echo"<td><a href='removerProdutos.php?id={$linha['id_produto']}'>Excluir</a></td>";
                 
                 echo"</tr>";
             }
 
-           echo "<tr class='botoes'>
-                    <td><a href='adicionarProdutos.php'><button type='button'>Adicionar</button></a></td>
-                        
+           echo "<tr>
+                    <td><a href='adicionar_produto.php'><button type='button'>Adicionar</button></a></td>
+                </tr>
+                <tr>
                     <td><a href='index.php'><button type='button'>Voltar</button></a></td>
                 </tr>";
 

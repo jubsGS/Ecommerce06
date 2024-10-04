@@ -244,7 +244,6 @@
                     }
                 } elseif (isset($_GET['operacao']) && $_GET['operacao'] == 'fechar') {
                     $id_compra = $_GET['id_compra'];
-                    echo "ID compra: " . $id_compra;
     
                     $varSQL = "SELECT SUM(p.valor_unitario * cp.quantidade) AS total
                     FROM compra_produto cp
@@ -256,20 +255,17 @@
     
                     if ($linha = $select->fetch()) {
                         $total = $linha['total'];
-                        echo "<br>Total: R$" . $total;  
+                        echo""; 
                     }
                     echo"   
                     <form name='formVoucher' method='POST' action='pagar.php?id_compra=$id_compra'>
-                        <label for='ac_dec'>Acres/Decres(+/-):</label><br>
-                        <input type='number' name='ac_dec' step='0.01' required><br>
-    
-                        <label for='voucher'>Informe o Voucher</label><br>
-                        <input type='text' name='voucher' required><br>
-    
-                        <label for='voucher_verif'>Redigite o Voucher</label><br>
-                        <input type='text' name='voucher_verif' required><br>
-    
-                        <button type='submit'>Fechar Compra</button>
+                        <article class='compra'>
+                                <div>
+                                    <h1>Resumo da compra</h1>    
+                                     <p>Total: R$$total</p>
+                                    <button type='submit'>Fechar Compra</button>
+                                </div>
+                            </article>
                     </form>";
                 } else {
                     $id_compra = CriarCompra($idSessao, $conn);
@@ -300,3 +296,6 @@
 </body>
 </html>
 
+<?php
+
+?>

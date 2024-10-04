@@ -84,19 +84,13 @@ table{
     border: 1px solid rgb(171, 234, 171);
 }
 
-table .botoes{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
 table button{
     margin-top: 10px;
     border-radius: 20px;
     border: 0px;
     background-color: black;
     color:rgb(243, 255, 217);
-    width: auto;
+    width: 150%;
     height: 25px;
     transition: all 0.5s;
 }

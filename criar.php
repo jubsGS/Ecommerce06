@@ -44,7 +44,6 @@
     
     <main class="registro">
         <?php
-            include('cabecalho.php');
            
             echo"
             <form action='#' method='POST' enctype='multipart/form-data'
