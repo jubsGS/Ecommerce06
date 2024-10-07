@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/editar.css">
     <link href='https://fonts.googleapis.com/css?family=Newsreader' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/abf8c89fd5.js" crossorigin="anonymous"></script>
@@ -42,7 +42,7 @@
         </nav>
     </header>
     
-    <main class="perfil">
+    <main class="registro">
         <?php
 
             $varSQL = "SELECT * FROM usuario WHERE excluido = false AND 
@@ -53,7 +53,6 @@
             $select->bindParam(':id_usuario', $_SESSION['sessaoId']);
             $select->execute(); //executa sql e seleciona o que é pedido     
 
-            echo"<div id='conta'>";
             $linha = $select->fetch();
 
                 $id = $linha["id_usuario"];
@@ -63,7 +62,6 @@
                 $telefone = $linha["telefone"];
                 $senha = $linha["senha"];
             
-                echo "sessao id".$_SESSION['sessaoId'];
                 echo"<div class='informacoes'>
                         <div class='img'>";
                         if(file_exists($varFoto)){
@@ -77,23 +75,33 @@
                 echo "
                         <form action='' method='post' enctype='multipart/form-data'> 
                         <h2><label for=''>Alterar Usuário</label></h2>
-                    
-                        <label for='nome'>Nome:</label>
-                        <input type='text' name='nome' value=$nome><br><br>
-                    
-                        <label for='email'>Email:</label>
-                        <input type='text' name='email' value=$email><br><br>
-                    
-                        <label for='senha'>Senha:</label>
-                        <input type='text' name='senha' value=$senha><br><br>
-                    
-                        <label for='telefone'>Telefone:</label>
-                        <input type='text' name='telefone' value=$telefone><br><br>
-                    
-                        Selecione uma foto (*.jpg)<br>
-                        <input type='file' name='foto'><br><br>
-                    
-                        <button type='submit'>Enviar dados</button>
+                        
+                         <div class='Dados'>
+                            <label for='nome'>Nome:</label>
+                            <input type='text' name='nome' value=$nome><br><br>
+                        </div>
+                            
+                        <div class='Dados'>
+                            <label for='email'>Email:</label>
+                            <input type='text' name='email' value=$email><br><br>
+                        </div>
+
+                        <div class='Dados'>
+                            <label for='senha'>Senha:</label>
+                            <input type='text' name='senha' value=$senha><br><br>
+                        </div>
+
+                        <div class='Dados'>
+                            <label for='telefone'>Telefone:</label>
+                            <input type='text' name='telefone' value=$telefone><br><br>
+                        </div>
+
+                        <div class='Dados'>     
+                            Selecione uma foto (*.jpg)<br>
+                            <input type='file' name='foto'><br><br>
+                        </div>
+
+                            <button type='submit'>Enviar dados</button>
                         </form>";
 
                                      

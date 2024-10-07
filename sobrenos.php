@@ -47,15 +47,17 @@
                 <h1 class="sobrenos">Sobre nós</h1>
                 <div class="text">
                     <h2 class="t1"> Equipe 6 - 2° ano A <br>
-                        Integrantes: Gabriela, Julia, Arthur, Pedro P., Pedro D.
+                        Integrantes: Arthur Serra, Gabriela Oliveira, Julia Gomes, Pedro Pimenta, Pedro Damiance
                     </h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        O projeto é fundamentado a partir do surgimento da ideia e concordância da empresa pela busca em confeccionar um produto que traga a sensação de aconchego àquele que se interesse, tanto nos aspectos visuais quanto nos aromas, e o adquira a partir de seu deleite. Optamos por apresentar velas aromáticas onde a mercadoria detém uma origem totalmente artesanal, desde a produção até o momento de embalo para o cliente. 
+                            Além de ser um produto totalmente de origem vegana, estabelecemos uma identidade empresarial ao combinarmos fragrâncias e sensações em nossos produtos que irão atender aos pedidos e expectativas postos pelos clientes.<br><br>
+                    
+                        Nosso nome, Efêmero - Velas Artesanais", vem do exato sentido da palavra efêmero, que possui um significado de pouco duradouro, como a chama de uma vela, foi pensando nesse significado que a palavra “Efêmero” se tornou o visual de nossa marca, trazendo junto o ditado popular de que tudo que é efêmero possui sua beleza particular.
                     </p>
                 </div>
                 <div class="divimg">
-                    <div class="foto">Foto da Equipe</div>
+                    <div class="foto"><img src='imagens/sobre.jpg'></div>
                 </div>
             </article>
         </main>

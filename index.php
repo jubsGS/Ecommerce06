@@ -48,7 +48,7 @@
                 <div id="textHome">
                     <p><!--textinho informativo do produto-->
                         <h1><strong>EFÊMERO</strong></h1>
-                    <strong class="slogan">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae libero tincidunt, tempor nibh vitae, lacinia quam. Cras viverra nunc et tortor efficitur porttitor.</strong>
+                    <strong class="slogan">Aromas que acolhem e visuais que encantam. Velas artesanais veganas para transformar cada momento em uma experiência de aconchego.</strong>
                     </p>
                 </div>
             </article>
@@ -74,7 +74,7 @@
                                             
                                             <p>
                                                 <h2>$nome</h2>
-                                                R$ $valoruni
+                                                R$ $valoruni.00
                                             </p>
                                         </section>
                                     </a>";

@@ -96,17 +96,15 @@
                 $insert->bindParam(':senha', $_POST["senha"]);
                 $insert->bindParam(':telefone', $_POST["telefone"]);
         
-                if($insert->execute()>0){
-                    echo"<script type='javascript'>alert('Conta criada com sucesso!');";
-                }
                 if($_FILES){
                     $id=$conn->lastInsertId();
                     $varArqRecebido=$_FILES['foto']['tmp_name'];
                     $varExtensaoPadrao='jpg';
                     $varNovoArq="imagens/u$id.$varExtensaoPadrao";
-                    if(move_uploaded_file($varArqRecebido, $varNovoArq)){
-                       echo"<script type='javascript'>alert('Arquivo de imagem enviado com sucesso!');";
-                    }
+                }
+                
+                if($insert->execute()>0){
+                    echo" <a href='login.html'><button>Voltar para o Login</button></a>";
                 }
                 
             }

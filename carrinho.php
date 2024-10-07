@@ -173,7 +173,7 @@
                             
                                     <div class='info'>
                                         <h3 class='nomeP'>{$linha['nome']}</h3>
-                                        <div class='precoU'><h4>R$ {$linha['valor_unitario']} </h4><h6> (p/unidade)</h6></div>
+                                        <div class='precoU'><h4>R$ {$linha['valor_unitario']}.00 </h4><h6> (p/unidade)</h6></div>
                         
                                         <div class='qtde'>
                                             <div class='adicionaExclui'>
@@ -185,7 +185,7 @@
     
                         $total += $linha['subtotal'];
     
-                        echo"           <h4 class='subT'>Subtotal: R$  {$linha['subtotal']}</h4>
+                        echo"           <h4 class='subT'>Subtotal: R$  {$linha['subtotal']}.00</h4>
                                     </div>
                                 </div>
                                 ";  
@@ -195,7 +195,7 @@
                     echo"   <article class='compra'>
                                 <div>
                                     <h1>Resumo da compra</h1>
-                                    <p>Total: R$$total</p>
+                                    <p>Total: R$$total.00</p>
                                     ";
                 
                     $varSQL = "SELECT status FROM compra WHERE id_compra = :id_compra";
@@ -262,7 +262,7 @@
                         <article class='compra'>
                                 <div>
                                     <h1>Resumo da compra</h1>    
-                                     <p>Total: R$$total</p>
+                                     <p>Total: R$$total.00</p>
                                     <button type='submit'>Fechar Compra</button>
                                 </div>
                             </article>

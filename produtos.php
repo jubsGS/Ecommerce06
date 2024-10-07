@@ -63,7 +63,7 @@
                                 <h2>$desc</h2>
                                 <hr>
                                 <h4>Quantidade de Estoque: $qtde_estoque</h4>
-                                <h3>R$$valoruni</h3><br>
+                                <h3>R$$valoruni.00</h3><br>
                                 ";
 
                             if ($qtde_estoque > 0) {
@@ -104,7 +104,7 @@
                                         
                                         <p>
                                             <h2>$nome</h2>
-                                            R$ $valoruni
+                                            R$ $valoruni.00
                                         </p>
                                     </section>
                                 </a>
