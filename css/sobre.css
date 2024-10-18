@@ -21,7 +21,7 @@ body {
 /* Fontes para títulos */
 h1, h2, h3, p {
     font-family: 'Newsreader', serif;
-    color: #1b4109; /* Verde escuro */
+    color: #000000; /* Verde escuro */
     margin-bottom: 0.5em;
 }
 
@@ -106,7 +106,7 @@ header.scrolled {
 
 /* Main */
 main {
-    background-color: rgb(230, 250, 230); /* Verde claro */
+    background-color: rgb(249, 255, 246); /* Verde claro */
     grid-column: 1;
     grid-row: 2;
     margin: 2% 5%;

@@ -1,404 +1,262 @@
-body{
-    text-wrap: wrap;
+/* Estilo base */
+body {
     width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    gap: 0px;
-
-
+    height: 100vh;
+    margin: 0;
+    padding: 0;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 50px 1fr auto;
-    background-color: rgb(255, 255, 255);
+    grid-template-rows: auto 1fr auto;
+    background-color: #f7f7f7;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
+    line-height: 1.6;
+    color: #333;
 }
-    body ul{
-        list-style-type: none;
-        padding: 0px;
-    }
 
-    body a{
-        text-decoration: none;
-    }
-    body a:hover{
-        cursor: pointer;
-    }
+/* Fontes para títulos */
+h1, h2, h3, p {
+    font-family: 'Newsreader', serif;
+    color: #1b4109;
+    margin-bottom: 0.5em;
+}
 
-    body i:hover{
-        cursor: pointer;
-    }
+/* Links e Listas */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-header{
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #1b4109;
+    cursor: pointer;
+}
+
+/* Cabeçalho */
+header {
     grid-column: 1;
     grid-row: 1;
-    position: fixed;
-
-    height: 50px;
+    position: sticky;
+    top: 0;
     width: 100%;
-    background-color:rgb(225, 248, 174);
-    padding: 0px;
+    height: 60px;
+    background-color: #e1f8ae;
+    z-index: 10;
+    transition: box-shadow 0.3s;
 }
-    *>header .navTopo a:hover{
-        color: rgb(27, 65, 9);
-    }
-    .navTopo ul{
-        display: flex;
-        justify-content: space-between;
-        margin-left: 4%;
-        margin-right: 4%;
-    }
-    .navTopo ul li {
-        display: inline;
-        position: relative;
-        margin-left: 0px;
-    }
-    .icons{
-        width: auto;
-        display: inline;
-        position: relative;
-    }
-    .navTopo .icons{
-        display: inline;
-        position: relative;
-        margin-inline: 0px;
-        width: 200px;
-    }
-    .navTopo ul li a{
-        width: auto;
-        height: auto;
-        text-decoration: none;
-        color: rgb(52, 117, 52);
-    }
 
-main{
+header.scrolled {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navTopo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.navTopo > ul {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Links do menu */
+.navTopo a {
+    color: #347534;
+    font-weight: bold;
+}
+
+.navTopo a:hover {
+    color: #1b4109;
+}
+
+/* Estilo principal */
+main {
     grid-column: 1;
     grid-row: 2;
-    height: auto;
-    margin-top: 30px;
-    
+    margin: 30px auto;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, auto);
-}   
-    main img{
-        width: 100%;
-        /* max-width: 100%; */
-        text-align: center;
-        border-radius: 10px;
-    }
-    main .produto{
-        grid-column: 1;
-        grid-row: 1;
-        height: 100%;
-    }
-    main .info{
-        width: auto;
-        height: 100%;
-    }
-        main .info button{
-            margin-top: 10px;
-            border-radius: 10px;
-            border: 0px;
-            background-color: black;
-            color:rgb(243, 255, 217);
-            width: 100%;
-            height: 35px;
-            transition: all 0.5s;
-        }
-        main .info button:hover{background-color: rgb(238, 255, 201);
-            color: black;
-        }
-        main .info a{
-            color: rgb(27, 65, 9);
-            text-decoration: underline;
-        }
-        main .info a:hover{
-            cursor: pointer;
-        }
-        main .info h1{
-            font-size: 200%;
-        }
-        
-        main .info h2{
-            font-size: 120%;
-        }
+    gap: 20px;
+}
 
-    main #recomendacao{
-        grid-column: 1;
-        grid-row: 2;
-        margin-top: 50px;
-    }
-        main #recomendacao h1{
-            color: rgb(0, 0, 0);
-            min-width: 100%;
-            text-align: left;
-        }    
-        main #produtosRec section:hover{
-            cursor: pointer;
-        }
-        main #produtosRec section{
-            text-decoration: none;
-            color: black;
-        }
+main img {
+    width: 100%;
+    border-radius: 10px;
+}
 
-
-    main #produtosRec img{
-        width: 100%;
-        max-width: 100%;
-        text-align: center;
-        border-radius: 10px;
-    }
-footer{
+/* Informações do produto */
+.produto {
     grid-column: 1;
-    grid-row: 3;   
+    color: black;
 }
-    footer #contato p{
-        margin-left: 2%;
-        color: gray;
+
+.info {
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.info button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #1b4109;
+    color: #f3ffd9;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    border: 0px;
+    width: 100%;
+}
+
+.info button:hover {
+    background-color: #e1f8ae;
+    color: #1b4109;
+}
+
+.info a {
+    color: rgb(27, 65, 9);
+    text-decoration: underline;
+}
+
+/* Seção de recomendação */
+#recomendacao {
+    grid-column: 1;
+    margin-top: 50px;
+}
+    #recomendacao h1{
+        grid-column: 1/4;
+        grid-row: 1;
     }
-    footer a{
-        text-decoration: none;
-        color: grey;
-    }
-    footer li{
-        list-style-type: none;
-    }
-    footer #sobre h1{
-        font-size: 80%;
+
+    #produtosRec {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        padding: 20px;
         text-align: center;
-        margin-left: auto;
-        margin-right: auto;
     }
-    footer #textSobre{ 
-        text-align: center;
+    #produtosRec:hover{
+        transform: translateY(-5px);
     }
-@media (min-width: 768px){
-    main{
+    
+    #produtosRec img {
+        max-width: 100%;
+        border-radius: 10px;
+    }
+    
+    #produtosRec h3 {
+        font-size: 1.5em;
+        margin-top: 15px;
+        color: #1b4109;
+    }
+    
+    #produtosRec p {
+        font-size: 1.2em;
+        color: #333;
+    }
+/* Rodapé */
+footer {
+    grid-column: 1;
+    grid-row: 3;
+    background-color: #e1f8ae;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+footer div {
+    margin: 10px;
+    text-align: center;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    main {
         width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
     }
-        main img{
-            width: 100%;
-            min-width: 200px;
-        }
-        main .produto{
-            margin-left: 15%;
-            margin-right: 15%;
-            width: 70%;
-    
-            display: grid;
-            grid-template-rows: 1fr;
-            grid-template-columns: repeat(2, auto);
-            gap: 20px;
-            font-size: 16px;
-        }
-    
-        main .produto .imgProd{
-            grid-column: 1;
-            grid-row: 1;
 
-            height: auto;
-            min-width: auto;
-
-            margin: 0px;
-            padding: 0px;
-
-            text-align: auto;
-        }
-        main .produto .info{
-            grid-column: 2;
-            grid-row: 1;
-            margin-left: 5%;
-
-            height: auto;
-            min-width: auto;
-
-            margin: 0px;
-            padding: 0px;
-
-            text-align: auto;
-        }
-        main #recomendacao{
-            grid-column: 1;
-            grid-row: 2;
-            margin-top: 50px;
-            margin-bottom: 100px;
-            
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: auto 1fr;
-            gap: 1%;
-        }
-        main #recomendacao h1{
-            grid-column: 1/4;
-            grid-row: 1;
-        }
-        main #produtosRec{
-            grid-column: auto;
-            grid-row: 2;
-           
-        }
-                
-    footer{
+    .produto {
+        margin: 0 auto;
         display: grid;
-        grid-template-columns: 2fr 1fr;
-        grid-template-rows: 1fr;
-        width: 100%;
-        height: auto;    
-        }
-        footer #efemero{
-            grid-column: 1;
-            grid-row: 1;
-            background-color:rgb(225, 248, 174);
-        }
-        footer #contato{
-            grid-column: 2;
-            grid-row: 1; 
-            background-color:rgb(225, 248, 174);
-        }
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    #recomendacao {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto 1fr;
+        gap: 3%;
+        margin-bottom: 3%;
+    }
+    #produtosRec{
+        grid-row: 2;
+        grid-column: auto;
+        
+    }
+
 }
-@media (min-width: 425px) and (max-width: 768px) {
-    main{
+
+@media (max-width: 768px) {
+    .navTopo {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    main {
         width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
-    
+    }
+
+     #recomendacao {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto 1fr;
+        gap: 3%;
+        margin-bottom: 3%;
+    }
+    #produtosRec{
+        grid-row: 2;
+        grid-column: auto;
+        
+    }
+}
+
+@media (max-width: 425px) {
+    #recomendacao {
+        width: 90%;
+        margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(2, auto);
+        grid-template-rows: auto repeat(3, 1fr);
+        gap: 3%;
+        margin-bottom: 3%;
     }
-        main .produto{
-            width: auto;
-
-            display: grid;
-            grid-template-rows: 1fr;
-            grid-template-columns: repeat(2, auto);
-           
-            font-size: 16px;
-        }
-            main .produto .imgProd{
-                grid-column: 1;
-                grid-row: 1;
-
-                height: auto;
-                min-width: auto;
-                width: 100%;
-
-                margin: 0px;
-                padding: 0px;
-
-                text-align: auto;
-            }
-            main .produto .info{
-                grid-column: 1;
-                grid-row: 2;
-                margin-left: 5%;
-
-                height: auto;
-                min-width: auto;
-
-                margin: 0px;
-                padding: 0px;
-
-                text-align: auto;
-            }
-        main #recomendacao{
-            grid-column: 1;
-            grid-row: 2;
-            margin-top: 50px;
-            margin-bottom: 100px;
-            
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: auto 1fr;
-            gap: 1%;
-        }
-            main #recomendacao h1{
-                grid-column: 1/4;
-                grid-row: 1;
-            }
-        main #produtosRec{
-            grid-column: auto;
-            grid-row: 2;
+    #produtosRec{
+        grid-row: auto;
+        grid-column: 1;
         
-            }
-    footer{
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        grid-template-rows: 1fr;
-        width: 100%;
-        height: auto;    
-        }
-        footer #efemero{
-            grid-column: 1;
-            grid-row: 1;
-            background-color:rgb(225, 248, 174);
-        }
-        footer #contato{
-            grid-column: 2;
-            grid-row: 1; 
-            background-color:rgb(225, 248, 174);
-        }
-}
-@media (max-width: 425px){
-    
-        main .produto{
-            margin-left: 5%;
-            margin-right: 5%;
-            width: 90%;
-
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(auto, auto);
-            gap: 20px;
-            font-size: 16px;
-        }
-            main .info{
-                grid-row: 2;
-                grid-column: 1;
-                margin-bottom: 0px;
-            }
-            main #recomendacao{
-                grid-column: 1;
-                grid-row: 2;
-                margin-top: 50px;
-                margin-bottom: 100px;
-                
-                display: grid;
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(4, auto);
-                gap: 1%;
-
-                height: 90%;
-                margin-left: 5%;
-                margin-right: 5%;
-            }
-            main #recomendacao h1{
-                grid-column: 1;
-                grid-row: 1;
-            }
-            main #produtosRec{
-                grid-column: 1;
-                grid-row: auto;
-               
-            }
-    footer{
-        display: grid;
-        grid-template-columns:1fr;
-        grid-template-rows: auto 1fr;
-        width: 100%;
-        height: auto;    
-        }
-        footer #efemero{
-            grid-column: 1;
-            grid-row: 1;
-            background-color:rgb(225, 248, 174);
-        }
-        footer #contato{
-            grid-column: 1;
-            grid-row: 2; 
-            background-color:rgb(225, 248, 174);
-        }
+    }
 }

@@ -20,14 +20,18 @@
         <header>
             <nav class="navTopo">
                 <ul>
-                    <li>
-                        <a href="index.php"><strong>EFÊMERO</strong></a>
-                    </li>
-
+                    <li><a href="index.php"><strong>EFÊMERO</strong></a></li>
                     <li>
                         <ul class="icons">
                             <li><a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                            <li><a href="login.php"><i class="fa-solid fa-user"></a></i></li>
+                            <?php
+
+                                if ($conn && isset($_SESSION['sessaoLogin'])) {
+                                    echo "<li><a href='perfil.php?id=" . htmlspecialchars($_SESSION['sessaoId']) . "'><i class='fa-solid fa-user'></i></a></li>";
+                                } else {
+                                    echo "<li><a href='login.php'><i class='fa-solid fa-user'></i></a></li>";
+                                }
+                            ?>
                         </ul>
                     </li>
                 </ul>
@@ -121,10 +125,8 @@
 
             <div id="contato">
                 <h3>Contato</h3>
-                    <p>
-                        efemero@gmail.com<br>
-                        Colégio Técnico Industrial "Prof. Isaac Portal Roldán"-UNESP - Bauru/SP, 17033-260
-                    </p>
+                <p>efemero@gmail.com<br>
+                Colégio Técnico Industrial "Prof. Isaac Portal Roldán" - UNESP - Bauru/SP, 17033-260</p>
             </div>
         </footer>
     </body>

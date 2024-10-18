@@ -10,17 +10,23 @@
 </head>
 
 <body>
-    <header>
+<header>
         <nav class="navTopo">
             <ul>
-                <li>
-                    <a href="index.php"><strong>EFÊMERO</strong></a>
-                </li>
-
+                <li><a href="index.php"><strong>EFÊMERO</strong></a></li>
                 <li>
                     <ul class="icons">
                         <li><a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                        <li><a href="login.php"><i class="fa-solid fa-user"></a></i></li>
+                        <?php
+                            include("cabecalho.php");
+                            $conn = conecta();
+
+                            if ($conn && isset($_SESSION['sessaoLogin'])) {
+                                echo "<li><a href='perfil.php?id=" . htmlspecialchars($_SESSION['sessaoId']) . "'><i class='fa-solid fa-user'></i></a></li>";
+                            } else {
+                                echo "<li><a href='login.php'><i class='fa-solid fa-user'></i></a></li>";
+                            }
+                        ?>
                     </ul>
                 </li>
             </ul>
@@ -29,12 +35,10 @@
     
     <main class="login-container">
         <?php 
-            include("cabecalho.php");
+            
 
             $_SESSION['sessaoConectado']=false;
             $_SESSION['sessaoLogin']="";
-
-            $conn = conecta();
 
             if(isset($_COOKIE['loginCookie'])){
                 $loginCookie=$_COOKIE['loginCookie'];

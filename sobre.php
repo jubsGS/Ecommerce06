@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/sobrenos.css">
+        <link rel="stylesheet" href="css/sobre.css">
         <link href="https://fonts.googleapis.com/css?family=Newsreader|Inter" rel="stylesheet">
         <script src="https://kit.fontawesome.com/abf8c89fd5.js" crossorigin="anonymous"></script>
         <title>Sobre Nós</title>
@@ -31,7 +31,6 @@
                     </li>
                 </ul>
             </nav>
-            
         </header>
 
         <main>
@@ -55,15 +54,15 @@
         </main>
         
         <footer>
-        <div id="efemero">
-            <h3>Efêmero - Velas Artesanais</h3>
-        </div>
+            <div id="efemero">
+                <h3>Efêmero - Velas Artesanais</h3>
+            </div>
 
-        <div id="contato">
-            <h3>Contato</h3>
-            <p>efemero@gmail.com<br>
-            Colégio Técnico Industrial "Prof. Isaac Portal Roldán" - UNESP - Bauru/SP, 17033-260</p>
-        </div>
-    </footer>
+            <div id="contato">
+                <h3>Contato</h3>
+                <p>efemero@gmail.com<br>
+                Colégio Técnico Industrial "Prof. Isaac Portal Roldán" - UNESP - Bauru/SP, 17033-260</p>
+            </div>
+        </footer>
     </body>
 </html>

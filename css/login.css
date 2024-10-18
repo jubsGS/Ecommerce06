@@ -1,76 +1,109 @@
-body{
-    text-wrap: wrap;
+/* Estilos Gerais */
+body {
     width: 100%;
     height: 100vh;
-    margin: 0px;
-    padding: 0px;
-    gap: 0px;
-
+    margin: 0;
+    padding: 0;
 
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 50px 1fr auto;
-    background-color: rgb(255, 255, 255);
+    grid-template-rows: auto 1fr auto;
+
+    background-color: #f7f7f7;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
 }
-    body ul{
-        list-style-type: none;
-        padding: 0px;
-    }
 
-    body a{
-        text-decoration: none;
-    }
-    body a:hover{
-        cursor: pointer;
-    }
+/* Fontes para títulos */
+h1, h2, h3, p{
+    font-family: 'Newsreader', serif;
+    color: #1b4109;
+    margin-bottom: 0.5em;
+}
 
-    body i:hover{
-        cursor: pointer;
-    }
+/* Links e Listas */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-    header{
-        grid-column: 1;
-        grid-row: 1;
-        position: fixed;
-    
-        height: 50px;
-        width: 100%;
-        background-color:rgb(225, 248, 174);
-        
-        padding: 0px;
-    }
-        *>header .navTopo a:hover{
-            color: rgb(27, 65, 9);
-        }
-        .navTopo ul{
-            display: flex;
-            justify-content: space-between;
-            margin-left: 4%;
-            margin-right: 4%;
-            width: 92%;
-        }
-        .navTopo ul li {
-            display: inline;
-            position: relative;
-            margin-left: 0px;
-        }
-        .icons{
-            width: auto;
-            display: inline;
-            position: relative;
-        }
-        .navTopo .icons{
-            display: inline;
-            position: relative;
-            margin-inline: 0px;
-            width: 200px;
-        }
-         .navTopo ul li a{
-            width: auto;
-            height: auto;
-            text-decoration: none;
-            color: rgb(52, 117, 52);
-        }
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #1b4109;
+    cursor: pointer;
+}
+
+/* Cabeçalho */
+header {
+    grid-column: 1;
+    grid-row: 1;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 60px; 
+    background-color: #e1f8ae;
+    z-index: 10;
+    transition: box-shadow 0.3s; 
+}
+
+/* Adiciona sombra quando o cabeçalho é fixo */
+header.scrolled {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navTopo {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    height: 100%;
+    padding: 0 20px; 
+}
+
+.navTopo > ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    justify-content: space-between; 
+}
+
+.navTopo > ul > li {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo para a classe .icons */
+.navTopo .icons {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    gap: 10px;
+}
+
+
+/* Estilo para os links */
+.navTopo a {
+    text-decoration: none;
+    color: #347534;
+    font-weight: bold;
+}
+
+
+.navTopo a:hover {
+    color: #1b4109;
+    cursor: pointer;
+}
 main{
     grid-column: 1;
     grid-row: 2;
@@ -113,20 +146,20 @@ main{
 }
 
 button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #1b4109;
+    color: #f3ffd9;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    border: 0px;
     width: 100%;
-    padding: 12px;
-    background-color: black;
-    border: none;
-    border-radius: 15px;
-    color: rgb(229, 255, 174);
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.5s;
 }
 
 button:hover {
-    background-color: rgb(238, 255, 201);
-    color: black;
+    background-color: #e1f8ae;
+    color: #1b4109;
 }
 
 .Criar p {
@@ -137,19 +170,20 @@ button:hover {
 }
 
 .Criar button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #1b4109;
+    color: #f3ffd9;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    border: 0px;
     width: 100%;
-    padding: 12px;
-    background-color: black;
-    border: none;
-    border-radius: 15px;
-    color: rgb(229, 255, 174);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .Criar button:hover {
-    background-color: rgb(229, 255, 174);
-    color: black;
+    background-color: #e1f8ae;
+    color: #1b4109;
 }
 
 footer {
