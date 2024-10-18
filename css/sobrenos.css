@@ -1,240 +1,211 @@
-body{
+body {
     text-wrap: wrap;
     width: 100%;
     height: 100vh;
-    margin: 0px;
-    padding: 0px;
-    gap: 0px;
-
+    margin: 0;
+    padding: 0;
+    gap: 0;
 
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 50px 1fr auto;
-    background-color: rgb(255, 255, 255);
+    grid-template-rows: auto 1fr auto;
+
+    background-color: #f7f7f7; 
+
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
 }
-    body ul{
-        list-style-type: none;
-        padding: 0px;
-    }
 
-    body a{
-        text-decoration: none;
-    }
-    body a:hover{
-        cursor: pointer;
-    }
+/* Fontes para títulos */
+h1, h2, h3, p {
+    font-family: 'Newsreader', serif;
+    color: #1b4109; /* Verde escuro */
+    margin-bottom: 0.5em;
+}
 
-    body i:hover{
-        cursor: pointer;
-    }
+/* Links e Listas */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-header{
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #1b4109;
+    cursor: pointer;
+}
+
+/* Cabeçalho */
+header {
     grid-column: 1;
     grid-row: 1;
-    position: fixed;
-
-    height: 50px;
+    position: sticky;
+    top: 0;
     width: 100%;
-    background-color:rgb(225, 248, 174);
-    padding: 0px;
-    z-index: 1;
+    height: 60px; 
+    background-color: #e1f8ae;
+    z-index: 10;
+    transition: box-shadow 0.3s;
 }
-    *>header .navTopo a:hover{
-        color: rgb(27, 65, 9);
-    }
-    .navTopo ul{
-        display: flex;
-        justify-content: space-between;
-        margin-left: 4%;
-        margin-right: 4%;
-    }
-    .navTopo ul li {
-        display: inline;
-        position: relative;
-        margin-left: 0px;
-    }
-    .icons{
-        width: auto;
-        display: inline;
-        position: relative;
-    }
-    .navTopo .icons{
-        display: inline;
-        position: relative;
-        margin-inline: 0px;
-        width: 200px;
-    }
-     .navTopo ul li a{
-        width: auto;
-        height: auto;
-        text-decoration: none;
-        color: rgb(52, 117, 52);
-    }
 
-main{
-    background-color: rgb(237, 253, 203);
+/* Adiciona sombra quando o cabeçalho é fixo */
+header.scrolled {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navTopo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.navTopo > ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    justify-content: space-between; 
+}
+
+.navTopo > ul > li {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo para a classe .icons */
+.navTopo .icons {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    gap: 10px;
+}
+
+/* Estilo para os links */
+.navTopo a {
+    text-decoration: none;
+    color: #347534;
+    font-weight: bold;
+}
+
+.navTopo a:hover {
+    color: #1b4109;
+    cursor: pointer;
+}
+
+/* Main */
+main {
+    background-color: rgb(230, 250, 230); /* Verde claro */
     grid-column: 1;
     grid-row: 2;
-    
-    margin-top: 2%;
-    margin-bottom: 2%;
-    margin-left: 5%;
-    margin-right: 5%;
-
-border-radius: 15px;
-
+    margin: 2% 5%;
+    border-radius: 15px;
     width: 90%;
     height: auto;
-
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows:1fr;
+    grid-template-rows: 1fr;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
-
-article{
-    grid-row:1;
+.divimg {
+    grid-row: 3;
     grid-column: 1;
-    box-shadow: 0px 0px 15px rgb(243, 255, 217);
-    display:grid;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, auto);
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 4/3;
+    width: 80%;
+    margin: 0 auto;
 }
-    .divimg{
-        
-        grid-row: 3;
-        grid-column:1;
-        align-items: center;
-        overflow: hidden;
-        position: relative;
-        aspect-ratio: 4/3;
-        width: 80%;
-        margin-left: 10%;
-        margin-right: 10%;
-    }
-    .text{
-        grid-column:1;
-        grid-row: 2;
-        padding:20px;
-        font-size: 22px;
-        text-align: justify;
-    }
-    .sobrenos{
-        padding: 20px;
-        font-size: 50px;
-        grid-row: 1;
-        grid-column: 1/3;
-        height: auto;
-        margin: 0px;
-    }
-    .t1{
-        font-size: 20px;
-        color:gray;
-    }
-    .foto img{
-        width:100%;
-        background-color: black;
-    }
 
-    .foto{
-        background-color: black;
-        border: solid 1px black;
-        position:absolute;
-        width:80%;
-        aspect-ratio: 4/3;
-        top:50%; left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 5px;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Inter';
-        font-size: 15px;
-        font-style: italic;
-    }
-footer{
+.text {
     grid-column: 1;
-    grid-row: 3;   
-}
-    footer #contato p{
-        margin-left: 2%;
-        color: gray;
-    }
-    footer a{
-        text-decoration: none;
-        color: grey;
-    }
-    footer li{
-        list-style-type: none;
-    }
-    footer #efemero>*{
-        margin-left: 1%;
-    }
-
-.space{
-    display: inline-block;
-    width: 50px;
+    grid-row: 2;
+    padding: 20px;
+    font-size: 22px;
+    text-align: justify;
 }
 
-@media (min-width: 768px){
-    footer{
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        grid-template-rows: 1fr;
-        width: 100%;
-        height: auto;    
-    }
-        footer #efemero{
-            grid-column: 1;
-            grid-row: 1;
-            background-color:rgb(225, 248, 174);
-        }
-        footer #contato{
-            grid-column: 2;
-            grid-row: 1; 
-            background-color:rgb(225, 248, 174);
-        }
+.sobrenos {
+    padding: 20px;
+    font-size: 50px;
+    grid-row: 1;
+    grid-column: 1 / 3;
+    margin: 0;
 }
-@media (min-width: 425px) and (max-width: 768px) {
-    footer{
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        grid-template-rows: 1fr;
-        width: 100%;
-        height: auto;    
-        }
-        footer #efemero{
-            grid-column: 1;
-            grid-row: 1;
-            background-color:rgb(225, 248, 174);
-        }
-        footer #contato{
-            grid-column: 2;
-            grid-row: 1; 
-            background-color:rgb(225, 248, 174);
-        }
 
+.t1 {
+    font-size: 20px;
+    color: #666; /* Cinza mais escuro */
 }
-@media (max-width: 425px){
-    footer{
-        display: grid;
-        grid-template-columns:1fr;
-        grid-template-rows: auto 1fr;
-        width: 100%;
-        height: auto;    
-        }
-        footer #efemero{
-            grid-column: 1;
-            grid-row: 1;
-            background-color:rgb(225, 248, 174);
-        }
-        footer #contato{
-            grid-column: 1;
-            grid-row: 2; 
-            background-color:rgb(225, 248, 174);
-        }
+
+.foto img {
+    width: 100%;
+    background-color: black;
+}
+
+.foto {
+    background-color: black;
+    border: solid 1px black;
+    position: absolute;
+    width: 80%;
+    aspect-ratio: 4/3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif; /* Fonte padrão */
+    font-size: 15px;
+    font-style: italic;
+    color: white; /* Texto branco */
+}
+
+/* Rodapé */
+footer {
+    grid-column: 1;
+    grid-row: 3;
+    background-color: #e1f8ae;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+footer div {
+    margin: 10px;
+    text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .navTopo {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 425px) {
+    .navTopo {
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px;
+    }
 }
