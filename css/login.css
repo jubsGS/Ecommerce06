@@ -169,23 +169,6 @@ button:hover {
     color: #555;
 }
 
-.Criar button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #1b4109;
-    color: #f3ffd9;
-    border-radius: 20px;
-    transition: background-color 0.3s, color 0.3s;
-    border: 0px;
-    width: 100%;
-}
-
-.Criar button:hover {
-    background-color: #e1f8ae;
-    color: #1b4109;
-}
-
 footer {
     position: sticky;
     background-color:rgb(225, 248, 174);

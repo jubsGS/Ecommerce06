@@ -35,11 +35,6 @@
     
     <main class="login-container">
         <?php 
-            
-
-            $_SESSION['sessaoConectado']=false;
-            $_SESSION['sessaoLogin']="";
-
             if(isset($_COOKIE['loginCookie'])){
                 $loginCookie=$_COOKIE['loginCookie'];
             }
@@ -61,6 +56,10 @@
 
                     <button type='submit' value='Enviar'>Login</button>
                 </form>
+                <div class='EsqSenha'>
+                    <p>Esqueceu a senha?</p>
+                    <a href='esqueci.php'><button type='button'>Recuperar senha</button></a>
+                </div>
                 <div class='Criar'>
                     <p>Novo por aqui?</p>
                     <a href='criar.php'><button type='button'>Criar Conta</button></a>
