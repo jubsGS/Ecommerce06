@@ -54,7 +54,7 @@
                         <input type='password' id='senha' name='senha'>
                     </div>
 
-                    <button type='submit' value='Enviar'>Login</button>
+                    <button type='submit' value='Enviar'>Entrar</button>
                 </form>
                 <div class='EsqSenha'>
                     <p>Esqueceu a senha?</p>

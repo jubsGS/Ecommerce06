@@ -1,4 +1,5 @@
-body{
+
+body {
     text-wrap: wrap;
     width: 100%;
     height: 100vh;
@@ -6,86 +7,95 @@ body{
     padding: 0px;
     gap: 0px;
 
-
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 50px 1fr auto;
     background-color: rgb(255, 255, 255);
 }
-    body ul{
-        list-style-type: none;
-        padding: 0px;
-    }
 
-    body a{
-        text-decoration: none;
-    }
-    body a:hover{
-        cursor: pointer;
-    }
+body ul {
+    list-style-type: none;
+    padding: 0px;
+}
 
-    body i:hover{
-        cursor: pointer;
-    }
+body a {
+    text-decoration: none;
+}
 
-header{
+body a:hover {
+    cursor: pointer;
+}
+
+body i:hover {
+    cursor: pointer;
+}
+
+header {
     grid-column: 1;
     grid-row: 1;
     position: fixed;
 
     height: 50px;
     width: 100%;
-    background-color:rgb(225, 248, 174);
+    background-color: #e2fde3;
     padding: 0px;
 }
-    *>header .navTopo a:hover{
-        color: rgb(27, 65, 9);
-    }
-    .navTopo ul{
-        display: flex;
-        justify-content: space-between;
-        margin-left: 4%;
-        margin-right: 4%;
-    }
-    .navTopo ul li {
-        display: inline;
-        position: relative;
-        margin-left: 0px;
-    }
-    .icons{
-        width: auto;
-        display: inline;
-        position: relative;
-    }
-    .navTopo .icons{
-        display: inline;
-        position: relative;
-        margin-inline: 0px;
-        width: 200px;
-    }
-     .navTopo ul li a{
-        width: auto;
-        height: auto;
-        text-decoration: none;
-        color: rgb(52, 117, 52);
-    }
-main{
+
+header .navTopo a:hover {
+    color: rgb(27, 65, 9);
+}
+
+.navTopo ul {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.navTopo ul li {
+    display: inline;
+    position: relative;
+    margin-left: 0px;
+}
+
+.icons {
+    width: auto;
+    display: inline;
+    position: relative;
+}
+
+.navTopo .icons {
+    display: inline;
+    position: relative;
+    margin-inline: 0px;
+    width: 200px;
+}
+
+.navTopo ul li a {
+    width: auto;
+    height: auto;
+    text-decoration: none;
+    color: rgb(52, 117, 52);
+}
+
+main {
     grid-column: 1;
     grid-row: 2;
     width: 100%;
     height: auto;
 }
+
 .registro {
     background-color: #fff;
-    box-shadow: 0 0px 30px rgb(225, 248, 174);
+    box-shadow: 0 0px 30px rgb(227, 227, 227);
     border-radius: 10px;
     text-align: center;
     border: 1px solid #e0d9c8;
     grid-column: 1;
     grid-row: 2;
-    align-self: center; 
+    align-self: center;
     justify-self: center;
-    height: auto; 
+    height: auto;
     margin-top: 2%;
     margin-bottom: 2%;
 }
@@ -102,31 +112,31 @@ main{
 }
 
 .Dados input {
-    width: 91%;
+    width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-right: none;
     border-top: none;
     border-left: none;
-    font-size: 14px;
+    font-size: 14px; /* Padrão */
     outline: none;
 }
 
 button {
     width: 100%;
     padding: 12px;
-    background-color: black;
+    background-color: #006a04;
+    color: #ffffff;
     border: none;
     border-radius: 15px;
-    color: rgb(229,255,174);
-    font-size: 16px;
+    font-size: 16px; /* Padrão */
     cursor: pointer;
     transition: all 0.5s;
 }
 
 button:hover {
-    background-color: rgb(229,255,174);
-    color: black;
+    background-color: #4eab51;
+    color: #ffffff;
 }
 
 .opc-login {
@@ -136,30 +146,31 @@ button:hover {
 .opc-login p {
     margin-top: 30px;
     margin-bottom: 10px;
-    font-size: 14px;
+    font-size: 14px; /* Padrão */
     color: #555;
 }
 
 .opc-login a {
     color: #555;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 14px; /* Padrão */
 }
 
 .opc-login a:hover {
-    color: rgb(229,255,174);
+    color: #4eab51;
     text-decoration: underline;
 }
 
 footer {
     position: sticky;
-    background-color:rgb(225, 248, 174);
+    background-color: #e2fde3;
     text-align: center;
     grid-row: 3;
     grid-column: 1;
     height: 50px;
     width: calc(100%-20px);
 }
+
 footer ul {
     list-style-type: none;
     padding: 0;
@@ -173,26 +184,35 @@ footer ul li {
 footer ul li a {
     color: #555;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 14px; /* Padrão */
 }
 
 footer ul li a:hover {
-    color: rgb(229,255,174);
+    color: rgb(229, 255, 174);
     text-decoration: underline;
 }
 
-@media (min-width: 768px){
+/* Responsividade */
+@media (min-width: 768px) {
     .registro {
         width: 40%;
         padding: 40px;
     }
+    .Dados input,
+    button {
+        font-size: 16px; /* Aumenta fonte para desktop */
+    }
 }
 
 /* Tablet: */
-@media (min-width: 425px) and (max-width: 768px){
+@media (min-width: 425px) and (max-width: 768px) {
     .registro {
         width: 70%;
         padding: 40px;
+    }
+    .Dados input,
+    button {
+        font-size: 15px; /* Aumenta fonte para tablet */
     }
 }
 
@@ -201,12 +221,12 @@ footer ul li a:hover {
     .registro {
         width: 100%;
     }
-        .registro > *{
-            padding: 20px;
-        }
+    .registro > * {
+        padding: 20px;
+    }
 
     .Dados input,
     button {
-        font-size: 14px;
+        font-size: 14px; /* Reduz fonte para mobile */
     }
 }

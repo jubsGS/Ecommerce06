@@ -1,0 +1,18 @@
+@media (max-width: 425px) {
+    #titulo {
+        margin-top: 20px;
+        padding: 5%;
+        text-align: center;
+    }
+    .d1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+    .d1 img {
+        width: 80%;
+        margin-left: 40px;
+    }
+}

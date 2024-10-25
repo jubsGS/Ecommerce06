@@ -36,7 +36,7 @@ header{
 
     height: 50px;
     width: 100%;
-    background-color:rgb(225, 248, 174);
+    background-color: #e2fde3;
     padding: 0px;
 }
     *>header .navTopo a:hover{
@@ -264,7 +264,7 @@ header{
                 }
 
 footer {
-    background-color:rgb(225, 248, 174);
+    background-color: #e2fde3;
     text-align: center;
     grid-row: 3;
     grid-column: 1;

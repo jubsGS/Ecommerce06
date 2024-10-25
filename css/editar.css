@@ -12,13 +12,13 @@ body {
     background-color: #f7f7f7;
 
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 16px; /* Tamanho base da fonte */
     line-height: 1.6;
     color: #333;
 }
 
 /* Fontes para títulos */
-h1, h2, h3, p{
+h1, h2, h3, p {
     font-family: 'Newsreader', serif;
     color: #1b4109;
     margin-bottom: 0.5em;
@@ -50,7 +50,7 @@ header {
     top: 0;
     width: 100%;
     height: 60px; 
-    background-color: #e1f8ae;
+    background-color: #e2fde3;
     z-index: 10;
     transition: box-shadow 0.3s; 
 }
@@ -91,7 +91,6 @@ header.scrolled {
     gap: 10px;
 }
 
-
 /* Estilo para os links */
 .navTopo a {
     text-decoration: none;
@@ -99,20 +98,21 @@ header.scrolled {
     font-weight: bold;
 }
 
-
 .navTopo a:hover {
     color: #1b4109;
     cursor: pointer;
 }
-main{
+
+main {
     grid-column: 1;
     grid-row: 2;
     width: 100%;
     height: auto;
 }
+
 .registro {
     background-color: #fff;
-    box-shadow: 0 0px 30px rgb(225, 248, 174);
+    box-shadow: 0 0px 30px rgb(200, 200, 200);
     border-radius: 10px;
     text-align: center;
     border: 1px solid #e0d9c8;
@@ -143,7 +143,7 @@ main{
     border-right: none;
     border-top: none;
     border-left: none;
-    font-size: 14px;
+    font-size: 14px; /* Tamanho base do input */
     outline: none;
 }
 
@@ -151,8 +151,8 @@ button {
     display: inline-block;
     margin-top: 15px;
     padding: 10px 20px;
-    background-color: #1b4109;
-    color: #f3ffd9;
+    background-color: #006a04;
+    color: #ffffff;
     border-radius: 20px;
     transition: background-color 0.3s, color 0.3s;
     border: 0px;
@@ -160,15 +160,15 @@ button {
 }
 
 button:hover {
-    background-color: #e1f8ae;
-    color: #1b4109;
+    background-color: #4eab51;
+    color: #ffffff;
 }
 
-
-.img img{
+.img img {
     width: 50%;
     border-radius: 100%;
 }
+
 .opc-login {
     margin-top: 20px;
 }
@@ -193,13 +193,14 @@ button:hover {
 
 footer {
     position: sticky;
-    background-color:rgb(225, 248, 174);
+    background-color: #e2fde3;
     text-align: center;
     grid-row: 3;
     grid-column: 1;
     height: 50px;
     width: calc(100%-20px);
 }
+
 footer ul {
     list-style-type: none;
     padding: 0;
@@ -221,8 +222,12 @@ footer ul li a:hover {
     text-decoration: underline;
 }
 
-
+/* Media Queries */
 @media (min-width: 768px){
+    body {
+        font-size: 18px; /* Aumenta o tamanho da fonte em telas grandes */
+    }
+
     .registro {
         width: 40%;
         padding: 40px;
@@ -231,6 +236,10 @@ footer ul li a:hover {
 
 /* Tablet: */
 @media (min-width: 425px) and (max-width: 768px){
+    body {
+        font-size: 17px; /* Aumenta o tamanho da fonte em tablets */
+    }
+
     .registro {
         width: 70%;
         padding: 40px;
@@ -239,15 +248,287 @@ footer ul li a:hover {
 
 /* Mobile: */
 @media (max-width: 425px) {
+    body {
+        font-size: 16px; /* Tamanho padrão para dispositivos móveis */
+    }
+
     .registro {
         width: 100%;
     }
-        .registro > *{
-            padding: 20px;
-        }
+    
+    .registro > * {
+        padding: 20px;
+    }
 
     .Dados input,
     button {
-        font-size: 14px;
+        font-size: 14px; /* Tamanho da fonte para inputs e botões */
+    }
+}
+/* Estilos Gerais */
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+
+    background-color: #f7f7f7;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; /* Tamanho base da fonte */
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Fontes para títulos */
+h1, h2, h3, p {
+    font-family: 'Newsreader', serif;
+    color: #1b4109;
+    margin-bottom: 0.5em;
+}
+
+/* Links e Listas */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #1b4109;
+    cursor: pointer;
+}
+
+/* Cabeçalho */
+header {
+    grid-column: 1;
+    grid-row: 1;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 60px; 
+    background-color: #e2fde3;
+    z-index: 10;
+    transition: box-shadow 0.3s; 
+}
+
+/* Adiciona sombra quando o cabeçalho é fixo */
+header.scrolled {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navTopo {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    height: 100%;
+    padding: 0 20px; 
+}
+
+.navTopo > ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    justify-content: space-between; 
+}
+
+.navTopo > ul > li {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo para a classe .icons */
+.navTopo .icons {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    gap: 10px;
+}
+
+/* Estilo para os links */
+.navTopo a {
+    text-decoration: none;
+    color: #347534;
+    font-weight: bold;
+}
+
+.navTopo a:hover {
+    color: #1b4109;
+    cursor: pointer;
+}
+
+main {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    height: auto;
+}
+
+.registro {
+    background-color: #fff;
+    box-shadow: 0 0px 30px rgb(200, 200, 200);
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #e0d9c8;
+    grid-column: 1;
+    grid-row: 2;
+    align-self: center; 
+    justify-self: center;
+    height: auto; 
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.Dados {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.Dados label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.Dados input {
+    width: 91%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-top: none;
+    border-left: none;
+    font-size: 14px; /* Tamanho base do input */
+    outline: none;
+}
+
+button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #006a04;
+    color: #ffffff;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    border: 0px;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #4eab51;
+    color: #ffffff;
+}
+
+.img img {
+    width: 50%;
+    border-radius: 100%;
+}
+
+.opc-login {
+    margin-top: 20px;
+}
+
+.opc-login p {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.opc-login a {
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.opc-login a:hover {
+    color: rgb(229,255,174);
+    text-decoration: underline;
+}
+
+footer {
+    position: sticky;
+    background-color: #e2fde3;
+    text-align: center;
+    grid-row: 3;
+    grid-column: 1;
+    height: 50px;
+    width: calc(100%-20px);
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer ul li {
+    display: inline;
+    padding: 10px;
+}
+
+footer ul li a {
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+footer ul li a:hover {
+    color: rgb(12, 13, 9);
+    text-decoration: underline;
+}
+
+/* Media Queries */
+@media (min-width: 768px){
+    body {
+        font-size: 18px; /* Aumenta o tamanho da fonte em telas grandes */
+    }
+
+    .registro {
+        width: 40%;
+        padding: 40px;
+    }
+}
+
+/* Tablet: */
+@media (min-width: 425px) and (max-width: 768px){
+    body {
+        font-size: 17px; /* Aumenta o tamanho da fonte em tablets */
+    }
+
+    .registro {
+        width: 70%;
+        padding: 40px;
+    }
+}
+
+/* Mobile: */
+@media (max-width: 425px) {
+    body {
+        font-size: 16px; /* Tamanho padrão para dispositivos móveis */
+    }
+
+    .registro {
+        width: 100%;
+    }
+    
+    .registro > * {
+        padding: 20px;
+    }
+
+    .Dados input,
+    button {
+        font-size: 14px; /* Tamanho da fonte para inputs e botões */
     }
 }

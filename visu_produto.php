@@ -9,37 +9,29 @@
     <script src="https://kit.fontawesome.com/abf8c89fd5.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<header>
+    <header>
         <nav class="navTopo">
             <ul>
-                <li>
-                    <a href="index.php"><strong>EFÊMERO</strong></a>
-                </li>
-
+                <li><a href="index.php"><strong>EFÊMERO</strong></a></li>
                 <li>
                     <ul class="icons">
                         <li><a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
                         <?php
-                                include("cabecalho.php");
-                                $conn = conecta();
-                                if(!$conn){
-            
-                                    exit; //se nn conectar, sai
-                                }
+                            include("cabecalho.php");
+                            $conn = conecta();
 
-                                
-                                if(isset( $_SESSION['sessaoLogin'])){
-                                    echo"<li><a href='perfil.php?id=".$_SESSION['sessaoId']."'><i class='fa-solid fa-user'></a></i></li>";
-                                }
-                                else{
-                                    echo"<li><a href='login.php'><i class='fa-solid fa-user'></a></i></li>";
-                                }
-                            ?>
+                            if ($conn && isset($_SESSION['sessaoLogin'])) {
+                                echo "<li><a href='perfil.php?id=" . htmlspecialchars($_SESSION['sessaoId']) . "'><i class='fa-solid fa-user'></i></a></li>";
+                            } else {
+                                echo "<li><a href='login.php'><i class='fa-solid fa-user'></i></a></li>";
+                            }
+                        ?>
                     </ul>
                 </li>
             </ul>
         </nav>
     </header>
+
     <main>
         <?php
 

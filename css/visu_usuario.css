@@ -1,142 +1,209 @@
-body{
-    text-wrap: wrap;
+/* Estilos Gerais */
+body {
     width: 100%;
     height: 100vh;
-    margin: 0px;
-    padding: 0px;
-    gap: 0px;
-
-
+    margin: 0;
+    padding: 0;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 50px 1fr auto;
-    background-color: rgb(255, 255, 255);
+    grid-template-rows: auto 1fr auto;
+    background-color: #f7f7f7;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; /* Tamanho base para dispositivos grandes */
+    line-height: 1.6;
+    color: #333;
 }
-    body ul{
-        list-style-type: none;
-        padding: 0px;
-    }
 
-    body a{
-        text-decoration: none;
-    }
-    body a:hover{
-        cursor: pointer;
-    }
+/* Fontes para títulos */
+h1, h2, h3, p {
+    font-family: 'Newsreader', serif;
+    color: #1b4109;
+    margin-bottom: 0.5em;
+}
 
-    body i:hover{
-        cursor: pointer;
-    }
+/* Links e Listas */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-    header{
-        grid-column: 1;
-        grid-row: 1;
-        position: fixed;
-    
-        height: 50px;
-        width: 100%;
-        background-color:rgb(225, 248, 174);
-        
-        padding: 0px;
-    }
-        *>header .navTopo a:hover{
-            color: rgb(27, 65, 9);
-        }
-        .navTopo ul{
-            display: flex;
-            justify-content: space-between;
-            margin-left: 4%;
-            margin-right: 4%;
-            width: 92%;
-        }
-        .navTopo ul li {
-            display: inline;
-            position: relative;
-            margin-left: 0px;
-        }
-        .icons{
-            width: auto;
-            display: inline;
-            position: relative;
-        }
-        .navTopo .icons{
-            display: inline;
-            position: relative;
-            margin-inline: 0px;
-            width: 200px;
-        }
-         .navTopo ul li a{
-            width: auto;
-            height: auto;
-            text-decoration: none;
-            color: rgb(52, 117, 52);
-        }
-main{
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #1b4109;
+    cursor: pointer;
+}
+
+/* Cabeçalho */
+header {
+    grid-column: 1;
+    grid-row: 1;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 60px; 
+    background-color: #e2fde3;
+    z-index: 10;
+    transition: box-shadow 0.3s; 
+}
+
+/* Adiciona sombra quando o cabeçalho é fixo */
+header.scrolled {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navTopo {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    height: 100%;
+    padding: 0 20px; 
+}
+
+.navTopo > ul {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between; 
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilo para os links */
+.navTopo a {
+    color: #347534;
+    font-weight: bold;
+}
+
+.navTopo a:hover {
+    color: #1b4109;
+}
+
+/* Estilo principal */
+main {
     grid-column: 1;
     grid-row: 2;
     width: 100%;
     height: auto;
-
 }
-table{
+
+table {
     width: 100%;
     height: 100%;
-    border: 1px solid rgb(171, 234, 171);
+    border: 1px solid rgb(209, 247, 209);
 }
 
-table button{
+table button {
     margin-top: 10px;
     border-radius: 20px;
     border: 0px;
-    background-color: black;
-    color:rgb(243, 255, 217);
-    width: 150%;
+    background-color: #006a04;
+    color: #ffffff;
+    width: 100%; /* Ajuste para garantir que o botão utilize toda a largura */
     height: 25px;
     transition: all 0.5s;
 }
-table button:hover{
-    background-color: rgb(238, 255, 201);
-    color: black;
+
+table button:hover {
+    background-color: #4eab51;
 }
 
-    
+/* Rodapé */
 footer {
-    position: sticky;
-    background-color:rgb(225, 248, 174);
-    text-align: center;
-    grid-row: 3;
     grid-column: 1;
-    height: 50px;
-    width: calc(100%-20px);
-}
-footer ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-footer ul li {
-    display: inline;
-    padding: 10px;
+    grid-row: 3;
+    background-color: #e2fde3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
 }
 
-footer ul li a {
-    color: #555;
-    text-decoration: none;
-    font-size: 14px;
+footer div {
+    margin: 10px;
+    text-align: center;
 }
 
-footer ul li a:hover {
-    color: rgb(12, 13, 9);
-    text-decoration: underline;
-}
+/* Media Queries */
+@media (min-width: 768px) {
+    body {
+        font-size: 18px; /* Tamanho maior para telas grandes */
+    }
 
-@media (min-width: 768px){
+    h1 {
+        font-size: 2.5em; /* Tamanho para h1 em telas grandes */
+    }
+
+    h2 {
+        font-size: 2em; /* Tamanho para h2 em telas grandes */
+    }
+
+    h3 {
+        font-size: 1.5em; /* Tamanho para h3 em telas grandes */
+    }
+
+    p {
+        font-size: 1.125em; /* Tamanho para textos em telas grandes */
+    }
 }
 
 /* Tablet: */
-@media (min-width: 425px) and (max-width: 768px){
+@media (min-width: 425px) and (max-width: 768px) {
+    body {
+        font-size: 16px; /* Tamanho base para tablets */
+    }
+
+    h1 {
+        font-size: 2em; /* Tamanho para h1 em tablets */
+    }
+
+    h2 {
+        font-size: 1.75em; /* Tamanho para h2 em tablets */
+    }
+
+    h3 {
+        font-size: 1.25em; /* Tamanho para h3 em tablets */
+    }
+
+    p {
+        font-size: 1em; /* Tamanho para textos em tablets */
+    }
 }
 
 /* Mobile: */
 @media (max-width: 425px) {
+    body {
+        font-size: 14px; /* Tamanho base para dispositivos móveis */
+    }
+
+    h1 {
+        font-size: 1.75em; /* Tamanho para h1 em dispositivos móveis */
+    }
+
+    h2 {
+        font-size: 1.5em; /* Tamanho para h2 em dispositivos móveis */
+    }
+
+    h3 {
+        font-size: 1.125em; /* Tamanho para h3 em dispositivos móveis */
+    }
+
+    p {
+        font-size: 0.875em; /* Tamanho para textos em dispositivos móveis */
+    }
+
+    table button {
+        width: 100%; /* Certifique-se de que os botões ocupem a largura total */
+    }
 }

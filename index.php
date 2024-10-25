@@ -88,7 +88,7 @@
             <div id="sobreTxt">
                 <h2>Sobre Nós</h2>
                 <p>Para ver mais informações sobre nossa equipe e projeto, clique no botão abaixo.</p>
-                <a href="sobrenos.php" class="btn-ver-mais">Veja mais</a>
+                <a href="sobre.php" class="btn-ver-mais">Veja mais</a>
             </div>
         </section>
     </main>

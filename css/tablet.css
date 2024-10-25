@@ -1,0 +1,18 @@
+@media (min-width: 425px) and (max-width: 768px) {
+    article{
+        display: grid;
+        grid-template-rows: 60px auto;
+    }
+    .prod{
+        grid-row-start: 2;
+        grid-column-start: 2;
+    }
+    .info{
+        grid-row-start: 2;
+        grid-column-start: 3;
+    }
+    .d1{
+        display: grid;
+        grid-template-rows: repeat(3, auto);
+    }
+}

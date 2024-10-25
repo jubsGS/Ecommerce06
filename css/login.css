@@ -50,7 +50,7 @@ header {
     top: 0;
     width: 100%;
     height: 60px; 
-    background-color: #e1f8ae;
+    background-color: #e2fde3;
     z-index: 10;
     transition: box-shadow 0.3s; 
 }
@@ -112,7 +112,7 @@ main{
 }
 .login-container {
     background-color: #fff;
-    box-shadow: 0 0px 30px rgb(225, 248, 174);
+    box-shadow: 0 0px 30px rgb(179, 179, 179);
     border-radius: 10px;
     text-align: center;
     border: 1px solid #e0d9c8;
@@ -135,7 +135,7 @@ main{
 }
 
 .Dados input {
-    width: 91%;
+    width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-right: none;
@@ -145,22 +145,6 @@ main{
     outline: none;
 }
 
-button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #1b4109;
-    color: #f3ffd9;
-    border-radius: 20px;
-    transition: background-color 0.3s, color 0.3s;
-    border: 0px;
-    width: 100%;
-}
-
-button:hover {
-    background-color: #e1f8ae;
-    color: #1b4109;
-}
 
 .Criar p {
     margin-top: 30px;
@@ -169,9 +153,44 @@ button:hover {
     color: #555;
 }
 
+
+button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #006a04;
+    color: #ffffff;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    border: 0px;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #4eab51;
+    color: #ffffff;
+}
+
+.Criar button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #006a04;
+    color: #ffffff;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    border: 0px;
+    width: 100%;
+}
+
+.Criar button:hover {
+    background-color: #4eab51;
+    color: #ffffff;
+}
+
 footer {
     position: sticky;
-    background-color:rgb(225, 248, 174);
+    background-color: #e2fde3;
     text-align: center;
     grid-row: 3;
     grid-column: 1;

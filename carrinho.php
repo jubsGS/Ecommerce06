@@ -1,301 +1,210 @@
-
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="css/carrinho.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carrinho</title>
-  <link href='https://fonts.googleapis.com/css?family=Newsreader' rel='stylesheet'>
-  <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-  <script src="https://kit.fontawesome.com/abf8c89fd5.js" crossorigin="anonymous"></script>
-</head>
-
-
-
 <?php
     include("cabecalho.php");
-
-    
     $conn = conecta();
+    if (isset($_SESSION['sessaoConectado']) && $_SESSION['sessaoConectado'] == true) {
+        
+        $varSQL = "SELECT id_usuario FROM usuario WHERE email = :login";
+        $select = $conn->prepare($varSQL);
+        $select->bindParam(':login', $login);
+        $select->execute();
 
-    if(isset($_SESSION['sessaoId'])){
-        $idSessao = $_SESSION['sessaoId'];
+        if ($linha = $select->fetch()) {
+            $id_usuario = $linha['id_usuario'];
+            $varSQL = "UPDATE compra SET fk_id_usuario = :id_usuario WHERE sessao = :sessao";
+            $update = $conn->prepare($varSQL);
+            $update->bindParam(':sessao', $idSessao);
+            $update->bindParam(':id_usuario', $id_usuario);
+            $update->execute();
 
-        function CriarCompra($idSessao, $conn){
-            $varSQL = "SELECT id_compra, status FROM compra WHERE sessao = :sessao AND status = 'PENDENTE'";
+            $varSQL = "SELECT id_compra, status FROM compra WHERE fk_id_usuario = :id_usuario AND status = 'Pendente' ORDER BY id_compra ";
             $select = $conn->prepare($varSQL);
-            $select->bindParam(':sessao', $idSessao);
+            $select->bindParam(':id_usuario', $id_usuario);
             $select->execute();
-    
-            if ($linha = $select->fetch()) {
+            if ($linha = $select->fetch()){
                 $id_compra = $linha['id_compra'];
-                return $id_compra;
-            } else{
-                $status = 'PENDENTE';
-                $acrescimo_total = 0;
-        
-                $varSQL = "INSERT INTO compra (sessao, status, data, acrescimo_total) VALUES (:sessao, :status, NOW(), :acrescimo_total)";
-                $insert = $conn->prepare($varSQL);
-                $insert->bindParam(':sessao', $idSessao);
-                $insert->bindParam(':status', $status);
-                $insert->bindParam(':acrescimo_total', $acrescimo_total);
-    
-                if ($insert->execute()) {
-                    $id_compra = $conn->lastInsertId();
-                    return $id_compra;
-                } else {
-                    return false;
-                }
+                $status = $linha['status'];
             }
-        }
+            else{
+                $status = 'Pendente';
+                $varSQL = "INSERT INTO compra(status, data, sessao, fk_id_usuario) VALUES (:status, NOW(), :sessao, :id_usuario)";
+                $insert = $conn->prepare($varSQL);
+                $insert->bindParam(':status', $status);
+                $insert->bindParam(':sessao', $idSessao);
+                $insert->bindParam(':id_usuario', $id_usuario);
+                $insert->execute();
     
-        function IncluirExcluirProduto($id_compra, $id_produto, $conn, $operacao) {
-            $varSQL = "SELECT quantidade FROM compra_produto WHERE fk_id_compra = :id_compra AND fk_id_produto = :id_produto";
-            $select = $conn->prepare($varSQL);
-            $select->bindParam(':id_compra', $id_compra);
-            $select->bindParam(':id_produto', $id_produto);
-            $select->execute();
-        
-            if ($linha = $select->fetch()) {
-                if ($operacao == 'incluir') {
-                    $novaQtde = $linha['quantidade'] + 1;
-                    
-                    $varSQL = "UPDATE compra_produto SET quantidade = :quantidade WHERE fk_id_compra = :id_compra AND fk_id_produto = :id_produto";
-                    $update = $conn->prepare($varSQL);
-                    $update->bindParam(':quantidade', $novaQtde);
-                    $update->bindParam(':id_compra', $id_compra);
-                    $update->bindParam(':id_produto', $id_produto);
-                    $update->execute();
-                }
-    
-                elseif ($operacao == 'excluir') {
-                    $novaQtde = $linha['quantidade'] - 1;
-        
-                    if ($novaQtde > 0) {
-                        $varSQL = "UPDATE compra_produto SET quantidade = :quantidade WHERE fk_id_compra = :id_compra AND fk_id_produto = :id_produto";
-                        $update = $conn->prepare($varSQL);
-                        $update->bindParam(':quantidade', $novaQtde);
-                        $update->bindParam(':id_compra', $id_compra);
-                        $update->bindParam(':id_produto', $id_produto);
-                        $update->execute();
-                    } 
-                    else {
-                        $sqlDelete = "DELETE FROM compra_produto WHERE fk_id_compra = :id_compra AND fk_id_produto = :id_produto";
-                        $delete = $conn->prepare($sqlDelete);
-                        $delete->bindParam(':id_compra', $id_compra);
-                        $delete->bindParam(':id_produto', $id_produto);
-                        $delete->execute();
-                    }
-                }
-            } 
-            else {
-                if ($operacao == 'incluir') {
-                    $quantidade = 1;
-    
-                    $varSQL = "SELECT valor_unitario FROM produto WHERE id_produto = :id_produto";
-                    $select = $conn->prepare($varSQL);
-                    $select->bindParam(':id_produto', $id_produto);
-                    $select->execute();
-                    if ($produto = $select->fetch()) {
-                        $valor_unitario = $produto['valor_unitario'];
-                    }
-    
-                    $varSQL = "INSERT INTO compra_produto (fk_id_compra, fk_id_produto, quantidade, valor_unitario) VALUES (:id_compra, :id_produto, :quantidade, :valor_unitario)";
-                    $insert = $conn->prepare($varSQL);
-                    $insert->bindParam(':id_compra', $id_compra);
-                    $insert->bindParam(':id_produto', $id_produto);
-                    $insert->bindParam(':quantidade', $quantidade);
-                    $insert->bindParam(':valor_unitario', $valor_unitario);
-                    $insert->execute();
-                }
+                $id_compra = $conn->lastInsertId();
             }
         }
     }
-   
-    ?>
+    else{
+        $varSQL = "SELECT id_compra, status FROM compra WHERE sessao = :sessao AND status = 'Pendente'";
+        $select = $conn->prepare($varSQL);
+        $select->bindParam(':sessao', $idSessao);
+        $select->execute();
+        if($linha = $select->fetch()){
+            $id_compra = $linha['id_compra'];
+            $status = $linha['status'];
+        }
+        else{
+            $status = 'Pendente';
+            $varSQL = "INSERT INTO compra(status, data, sessao) VALUES (:status, NOW(), :sessao)";
+            $insert = $conn->prepare($varSQL);
+            $insert->bindParam(':status', $status);
+            $insert->bindParam(':sessao', $idSessao);
+            $insert->execute();
 
-<body>
-  <header>
-    <nav class="navTopo">
-        <ul>
-            <li>
-                <a href="index.php"><strong>EFÊMERO</strong></a>
-            </li>
+            $id_compra = $conn->lastInsertId();
+        }
+    }
+    echo "<html lang='pt-br'>
+            <head>
+                <meta charset='UTF-8'>
+                <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+                <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                <link rel='stylesheet' href='css/UI.css'>
+                <link rel='stylesheet' href='css/widescreen.css'>
+                <link rel='stylesheet' href='css/mobile.css'>
+                <link rel='stylesheet' href='css/tablet.css'>
+                <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css' integrity='sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==' crossorigin='anonymous' referrerpolicy='no-referrer' />
+                <link rel='preconnect' href='https://fonts.googleapis.com'>
+                <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+                <link href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap' rel='stylesheet'>
+                <title>Carrinho de Compras</title>
+            </head>
+            <body>
+                <article>";
+                    function AtualizarGrid ($id_compra){
+                        echo"
+                            <h1 id='titulo'>
+                                Carrinho de compras
+                            </h1>";
+                            $conn = conecta();
+                            $total = 0;
 
-            <li>
-                <ul class="icons">
-                    <li><a href="carrinho.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                     <?php
-                                if(isset($idSessao)){
-                                    echo"<li><a href='perfil.php?id=".$_SESSION['sessaoId']."'><i class='fa-solid fa-user'></a></i></li>";
+                            $varSQL = "SELECT p.*, cp.quantidade, (p.valor_unitario * cp.quantidade) AS subtotal FROM compra_produto cp JOIN produto p ON cp.fk_id_produto = p.id_produto WHERE cp.fk_id_compra = :id_compra";
+                            $select = $conn->prepare($varSQL);
+                            $select->bindParam(':id_compra', $id_compra);
+                            $select->execute();
+                            while($linha = $select-> fetch()){
+                            echo "
+                                <div class='d1'>";
+                                $varFoto = "../geral/imagens/p".$linha['id_produto'].".jpg";
+                                if(file_exists($varFoto)){
+                                    echo "<div class='prod'> <img src='$varFoto'>";
                                 }
                                 else{
-                                    echo"<li><a href='login.php'><i class='fa-solid fa-user'></a></i></li>";
+                                    echo "<div class='prod'> <img src='../geral/imagens/a_foto.jpg'>";
                                 }
-                            ?>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-  </header>
-
-  <main>
-        <?php
-
-            if(isset($_SESSION['sessaoId'])){
-                $idSessao = $_SESSION['sessaoId'];
-                function AtualizaGride($id_compra, $conn) {
-
-                    $varSQL = "SELECT p.*, cp.quantidade, (p.valor_unitario * cp.quantidade) AS subtotal 
-                            FROM compra_produto cp
-                            JOIN produto p ON cp.fk_id_produto = p.id_produto
-                            WHERE cp.fk_id_compra = :id_compra";
-                    $select = $conn->prepare($varSQL);
-                    $select->bindParam(':id_compra', $id_compra);
-                    $select->execute();  
-                
-                    $total = 0;
-    
-                    echo "  <article class='a1'>
-                                <h1>Carrinho</h1>
-                            </article>
-                    
-                            <article class='itens'>";
-    
-                    while ($linha = $select->fetch()) {
-                        $varFoto="imagens/p".$linha['id_produto'].".jpg";
-                        echo "
-                                <div class='produto'>
-                                    <div class='imagem'>
-                                        <img src='$varFoto'>
+                                echo "
                                     </div>
-                                    
-                            
-                                    <div class='info'>
-                                        <h3 class='nomeP'>{$linha['nome']}</h3>
-                                        <div class='precoU'><h4>R$ {$linha['valor_unitario']}.00 </h4><h6> (p/unidade)</h6></div>
-                        
-                                        <div class='qtde'>
-                                            <div class='adicionaExclui'>
-                                            <a href='carrinho.php?id_produto={$linha['id_produto']}&operacao=incluir'><button type='button'>+</button></a>
-                                            <p>{$linha['quantidade']}</p>
-                                            <a href='carrinho.php?id_produto={$linha['id_produto']}&operacao=excluir'><button type='button'>-</button></a>
-                                            </div>
-                                        </div>";
-    
-                        $total += $linha['subtotal'];
-    
-                        echo"           <h4 class='subT'>Subtotal: R$  {$linha['subtotal']}.00</h4>
-                                    </div>
+                                <div class='info'>
+                                    <div>{$linha['nome']}</div>
+                                    <div>{$linha['descricao']}</div>
+                                    <div>Quantidade: {$linha['quantidade']}</div>
+                                    <div class='preco'>R$ {$linha['subtotal']}</div>
+                                    <div class='divbtnProd'><a href='carrinho.php?id_produto={$linha['id_produto']}&operacao=Incluir'><button class='btnProd'>Adicionar</button></div></a>
+                                    <div class='divbtnProd'><a href='carrinho.php?id_produto={$linha['id_produto']}&operacao=Excluir'><button class='btnProd'>Remover</button></div></a>
                                 </div>
-                                ";  
-                    }
-                    echo "</article>";
-                
-                    echo"   <article class='compra'>
+                            </div>";
+                            $total += $linha['subtotal'];
+
+                            $varSQL = "UPDATE compra SET acrescimo_total = :total WHERE id_compra = :id_compra";
+                            $update = $conn->prepare($varSQL);
+                            $update->bindParam(':id_compra', $id_compra);
+                            $update->bindParam(':total', $total);
+                            $update->execute();
+                            }
+                            echo"
+                            <div class='finalizar-compra'>
                                 <div>
-                                    <h1>Resumo da compra</h1>
-                                    <p>Total: R$$total.00</p>
-                                    ";
-                
-                    $varSQL = "SELECT status FROM compra WHERE id_compra = :id_compra";
-                    $select = $conn->prepare($varSQL);
-                    $select->bindParam(':id_compra', $id_compra);
-                    $select->execute();
-                    
-                    while($linha = $select->fetch()){
-                        if ($linha['status'] == 'PENDENTE' && $total > 0 && isset($_SESSION['sessaoConectado']) && $_SESSION['sessaoConectado'] == true ) {
-                            echo "          <a href='carrinho.php?id_compra=$id_compra&operacao=fechar'><button class='btcompra'>Finalizar Compra</button></a>
-                                        </div>
-                                    </article>";
+                                    <h2>Subtotal:</h2>
+                                    <p class='textofinalizar'>R$ $total</p> 
+                                </div>
+                                <section class='desconto'>
+                                    <h2>Desconto</h2>
+                                    <form action='../compra/compra.php?id_compra=$id_compra&subtotal=$total' method='POST'>
+                                        <input type='number' class='info2' name='desconto' max='$total' step='0.1' value='0' required >
+                                </section>";
+                            if(isset($_SESSION['sessaoConectado']) && $_SESSION['sessaoConectado'] == true && $total > 0){
+                                echo"
+                                    <div class='divbtnFinalizar'>
+                                        <button type='submit' class='btnFinalizar'>Finalizar compra</button>
+                                    </div></form>";
+                            }
+                            echo"</div>";
                         }
-                    }
-                    
-                }
-    
-    
-                if (isset($_SESSION['sessaoConectado']) && $_SESSION['sessaoConectado'] == true) {
-                    $login = $_SESSION['sessaoLogin'];
-                    
-                    $varSQL = "SELECT id_usuario FROM usuario WHERE email = :login";
-                    $select = $conn->prepare($varSQL);
-                    $select->bindParam(':login', $login);
-                    $select->execute();
-    
-                    if ($linha = $select->fetch()) {
-                        $id_usuario = $linha['id_usuario'];
-    
-                        $varSQL = "UPDATE compra SET fk_id_usuario = :id_usuario WHERE sessao = :sessao AND status = 'PENDENTE'";
-                        $update = $conn->prepare($varSQL);
-                        $update->bindParam(':id_usuario', $id_usuario);
-                        $update->bindParam(':sessao', $idSessao);
-                        $update->execute();
-                    }
-                }
-    
-                if (isset($_GET['operacao']) && isset($_GET['id_produto'])) {
-                    $operacao = $_GET['operacao'];
-                    $id_produto = $_GET['id_produto'];
-    
-                    $id_compra = CriarCompra($idSessao, $conn);
-                    if ($id_compra) {
-                        IncluirExcluirProduto($id_compra, $id_produto, $conn, $operacao);
-                        AtualizaGride($id_compra, $conn);
-                    }
-                } elseif (isset($_GET['operacao']) && $_GET['operacao'] == 'fechar') {
-                    $id_compra = $_GET['id_compra'];
-    
-                    $varSQL = "SELECT SUM(p.valor_unitario * cp.quantidade) AS total
-                    FROM compra_produto cp
-                    JOIN produto p ON cp.fk_id_produto = p.id_produto
-                    WHERE cp.fk_id_compra = :id_compra";
-                    $select = $conn->prepare($varSQL);
-                    $select->bindParam(':id_compra', $id_compra);
-                    $select->execute();
-    
-                    if ($linha = $select->fetch()) {
-                        $total = $linha['total'];
-                        echo""; 
-                    }
-                    echo"   
-                    <form name='formVoucher' method='POST' action='pagar.php?id_compra=$id_compra'>
-                        <article class='compra'>
-                                <div>
-                                    <h1>Resumo da compra</h1>    
-                                     <p>Total: R$$total.00</p>
-                                    <button type='submit'>Fechar Compra</button>
-                                </div>
-                            </article>
-                    </form>";
-                } else {
-                    $id_compra = CriarCompra($idSessao, $conn);
-                    if ($id_compra) {
-                        AtualizaGride($id_compra, $conn);
-                    }
-                }
-            }else{
-                echo"";
-            }
+                    if (isset($_GET['operacao'])) {
+                        $operacao = $_GET['operacao'];
+                        $qtd = 0;
+                        if(isset($_GET['id_produto'])){
+                            $id_produto = $_GET['id_produto'];
+                            $varSQL = "SELECT quantidade FROM compra_produto WHERE fk_id_produto = :id_produto AND fk_id_compra = :id_compra";
+                            $select = $conn->prepare($varSQL);
+                            $select->bindParam(':id_produto', $id_produto);
+                            $select->bindParam(':id_compra', $id_compra);
+                            $select->execute();
+                            if($linha = $select->fetch())
+                                $qtd = $linha['quantidade'];
+                            
+                            $varSQL = "SELECT qtde_estoque FROM produto WHERE id_produto = :id_produto";
+                            $select = $conn->prepare($varSQL);
+                            $select->bindParam(':id_produto', $id_produto);
+                            $select->execute();
+                            $linha2 = $select->fetch();
 
-        ?>
-  </main> 
-
-  <footer>
-    <div id="efemero">
-        <h3>Efêmero - Velas Artesanais</h3>
-    </div>
-
-    <div id="contato">
-        <h3>Contato</h3>
-            <p>
-                efemero@gmail.com<br>
-                Colégio Técnico Industrial "Prof. Isaac Portal Roldán"-UNESP - Bauru/SP, 17033-260
-            </p>
-    </div>
-  </footer>
-</body>
-</html>
-
-<?php
+                        }
+                        if($operacao == 'Incluir'){
+                            if($qtd == 0){
+                                $varSQL = "SELECT valor_unitario FROM produto WHERE id_produto = :id_produto";
+                                $select = $conn->prepare($varSQL);
+                                $select->bindParam(':id_produto', $id_produto);
+                                $select->execute();
+                
+                                $valor_unitario = $select->fetch();
+                
+                                $varSQL = "INSERT INTO compra_produto (fk_id_produto, fk_id_compra, quantidade, valor_unitario) VALUES (:id_produto, :id_compra, 1, :valor_unitario)";
+                                $insert = $conn->prepare($varSQL);
+                                $insert->bindParam(':id_produto', $id_produto);
+                                $insert->bindParam(':id_compra', $id_compra);
+                                $insert->bindParam(':valor_unitario', $valor_unitario['valor_unitario']);
+                                $insert->execute();
+                            }
+                            else if ($qtd < $linha2['qtde_estoque']){
+                                $novaQtd = $qtd + 1;
+                                $varSQL = "UPDATE compra_produto SET quantidade = :quantidade WHERE fk_id_compra = :id_compra AND fk_id_produto = :id_produto";
+                                $update = $conn->prepare($varSQL);
+                                $update->bindParam(':quantidade', $novaQtd);
+                                $update->bindParam(':id_compra', $id_compra);
+                                $update->bindParam(':id_produto', $id_produto);
+                                $update->execute();
+                            }
+                            AtualizarGrid($id_compra);
+                        }
+                        else if($operacao == 'Excluir'){
+                            if($qtd > 1){
+                                $novaQtd = $qtd - 1;
+                                $varSQL = "UPDATE compra_produto SET quantidade = :quantidade WHERE fk_id_compra = :id_compra AND fk_id_produto = :id_produto";
+                                $update = $conn->prepare($varSQL);
+                                $update->bindParam(':quantidade', $novaQtd);
+                                $update->bindParam(':id_compra', $id_compra);
+                                $update->bindParam(':id_produto', $id_produto);
+                                $update->execute();
+                            }
+                            else{
+                                $varSQL = "DELETE FROM compra_produto WHERE fk_id_compra = :id_compra AND fk_id_produto = :id_produto";
+                                $delete = $conn->prepare($varSQL);
+                                $delete->bindParam(':id_compra', $id_compra);
+                                $delete->bindParam(':id_produto', $id_produto);
+                                $delete->execute();
+                            }
+                            AtualizarGrid($id_compra);
+                        }
+                    }else
+                        AtualizarGrid($id_compra);
+                echo "
+                </article>
+            </body>
+        </html>";
 
 ?>

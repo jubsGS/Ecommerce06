@@ -1,0 +1,65 @@
+.articl
+#titulo{
+    border-bottom: 1px solid black;
+    height: 50%;
+}
+.preco{
+    color: #6B8E56;
+    font-weight: bold;
+}
+#titulo {
+    color: #267100;
+    transition: margin-bottom 0.3s ease;
+}
+
+.info2 {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.info2:focus {
+    border-color: #66BB6A;
+}
+
+.btnProd{
+    border: none;
+    border-radius: 15px;
+    background-color: #66BB6A;
+    width: 100%;
+    height: 70%;
+}
+.btnFinalizar{
+    border: none;
+    border-radius: 15px;
+    background-color: #66BB6A;
+    height: 35%;
+    width: 40%;
+}
+.divbtnFinalizar, .divbtnProd{
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnProd:hover, .btnFinalizar:hover{
+    cursor: pointer;
+    background-color: #267100;
+}
+
+.btnProd:active, .btnFinalizar:active{
+    background-color: #1c4e02;
+}
+
+.divbtnFinalizar a, .divbtnProd a{
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+}
+
+.textofinalizar{
+    font-size: 1.5rem;
+}

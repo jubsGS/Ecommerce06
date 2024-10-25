@@ -146,21 +146,6 @@ main {
     object-fit: cover;
 }
 
-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #70945f;
-    border: none;
-    padding: 15px;
-    cursor: pointer;
-    z-index: 3;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-}
-
 #prev {
     left: 10px;
 }
@@ -206,19 +191,25 @@ button {
     margin-bottom: 20px;
 }
 
+
 #produtos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 30px;
+    align-items: stretch;
 }
 
 .produto {
+    grid-column: auto;
+    grid-row: auto;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
     padding: 20px;
     text-align: center;
+    height: auto;
 }
 
 .produto:hover {
@@ -294,49 +285,55 @@ footer div {
     margin: 10px;
     text-align: center;
 }
-
 /* Estilos Responsivos */
 @media (min-width: 768px) {
-    #produtos {
-        grid-template-columns: repeat(2, 1fr);
+    /* Fonte do título na seção sobre */
+    #sobre h2 {
+        font-size: 2.2em;
     }
-    /* .navTopo {
-        padding: 1% 4%;
-    } */
-
-    #sobre {
-        width: 40%;
+    /* Fonte do slogan */
+    .slogan {
+        font-size: 1.4em;
     }
 }
 
 @media (max-width: 768px) {
-    .navTopo {
-        flex-direction: column;
-        gap: 10px;
-        /* padding: 1.5% 4%; */
+    /* Ajustando fontes para telas menores */
+    #textHome h1 {
+        font-size: 2.5em;
     }
-    
-    #produtos {
-        grid-template-columns: 1fr;
+    .slogan {
+        font-size: 1.1em;
     }
-    #sobre {
-        width: 60%;
+    .produto h3 {
+        font-size: 1.3em;
+    }
+    .produto p {
+        font-size: 1em;
+    }
+    #sobre h2 {
+        font-size: 2em;
     }
 }
 
 @media (max-width: 425px) {
+    /* Fontes menores para dispositivos móveis */
     #textHome h1 {
         font-size: 2em;
     }
-
     .slogan {
         font-size: 1em;
     }
-
-    .btn-ver-mais {
+    .produto h3 {
+        font-size: 1.2em;
+    }
+    .produto p {
         font-size: 0.9em;
     }
-    #sobre {
-        width: 70%;
+    .btn-ver-mais {
+        font-size: 0.8em;
+    }
+    #sobre h2 {
+        font-size: 1.8em;
     }
 }

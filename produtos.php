@@ -10,7 +10,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/produto.css">
-        <title>Nome do produto</title>
+        <title>Produto</title>
         <link href='https://fonts.googleapis.com/css?family=Newsreader' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
         <script src="https://kit.fontawesome.com/abf8c89fd5.js" crossorigin="anonymous"></script>
